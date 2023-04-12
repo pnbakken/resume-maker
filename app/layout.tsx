@@ -13,9 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header></header>
+        <header>Resume maker</header>
         {children}
-        <footer></footer>
+        <footer>footer</footer>
       </body>
     </html>
   );
