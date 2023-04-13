@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Jost";
+    src: url("/fonts/Jost-VariableFont_wght.ttf");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Jost";
+    src: url("/fonts/Jost-Italic-VariableFont_wght.ttf");
+    font-style: italic;
+}
+
+$font-brand: "Jost", sans-serif;
+
+h1 {
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 900;
+}
+
+a {
+    color: $colour-light;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.small-text {
+    font-size: 0.75rem;
+    font-weight: 200;
+}
+
+.large-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.white-text {
+    color: $colour-light;
+}

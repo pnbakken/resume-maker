@@ -1,0 +1,293 @@
+/* I realise I could probably do all this with a ready made library like bootstrap but with the limited amount of 
+/* things I need this seems just as quick as learning one of those (Although I should really learn Bootstrap better at some point).
+/* Based off a document I've been expanding over the semester.
+*/
+
+/*
+    Grid
+*/
+
+.grid {
+    display: grid;
+}
+
+/* 
+    Flex classes
+*/
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-r {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-r.wrap {
+    flex-wrap: wrap !important;
+}
+
+.flex-r.wrap-reverse {
+    flex-wrap: wrap-reverse !important;
+}
+
+/*
+    Align & Justify
+*/
+
+//Align
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.align-evenly {
+    align-items: space-evenly;
+}
+
+.align-between {
+    align-items: space-between;
+}
+
+.align-around {
+    align-items: space-around;
+}
+
+.align-stretch {
+    align-items: stretch;
+}
+
+//Justify
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+// Self Align & Justify
+
+.align-self-start {
+    align-self: start;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.align-self-end {
+    align-self: end;
+}
+
+.align-self-stretch {
+    align-self: stretch;
+}
+
+.justify-self-start {
+    justify-self: start;
+}
+
+.justify-self-center {
+    justify-self: center;
+}
+
+.justify-self-end {
+    justify-self: end;
+}
+
+.justify-self-stretch {
+    justify-self: stretch;
+}
+
+/*
+    Padding
+*/
+
+.top-level-indent {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+
+    @media(max-width: 991px) {
+        padding-left: 2em !important;
+        padding-right: 2em !important;
+    }
+
+    @media(max-width: 768px) {
+        padding-left: 1.5em !important;
+        padding-right: 1.5em !important;
+    }
+
+    /* @media(max-width: 555px) {
+        padding-left: 1em !important;
+        padding-right: 1em !important;
+    } */
+
+    @media(max-width: 465px) {
+        padding-left: 0.5em !important;
+        padding-right: 0.5em !important;
+    }
+}
+
+
+/*
+    Sizing
+*/
+
+.full-width {
+    width: 100%;
+}
+
+.content-width {
+    width: fit-content;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.max-component-width {
+    max-width: 1800px;
+}
+
+.xl-component-width {
+    max-width: 800px;
+}
+
+.large-component-width {
+    max-width: 640px;
+}
+
+.standard-component-width {
+
+    max-width: 560px;
+}
+
+.smaller-component-width {
+    max-width: 400px;
+}
+
+.smallest-component-width {
+    max-width: 360px;
+}
+
+
+
+/*
+    Spacing
+*/
+
+// Gap
+.gap-xxs {
+    gap: 4px;
+}
+
+.gap-xs {
+    gap: 16px;
+}
+
+.gap-sm {
+    gap: 24px;
+}
+
+.gap-md {
+    gap: 40px;
+}
+
+.gap-lg {
+    gap: 80px;
+}
+
+.gap-xl {
+    gap: 160px;
+}
+
+// Border Radius
+
+.radius-sm {
+    border-radius: 5px;
+}
+
+.radius-md {
+    border-radius: 8px;
+}
+
+.radius-lg {
+    border-radius: 20px;
+}
+
+//Miscellaneous
+
+.show-interact:hover {
+    cursor: pointer;
+}
+
+.height-fit {
+    height: fit-content;
+}
+
+.height-match {
+    height: match-parent;
+}
+
+.raise {
+    z-index: 2;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.discrete {
+    background: none;
+    border: none;
+}
+
+.no-list-style {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pseudo-button {
+    padding: 4px 16px;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    background: $colour-primary;
+}
+
+.bordered {
+    border: 1px solid $colour-primary;
+}
+
+//Typography
+
+.warning {
+    color: #f73030;
+}
