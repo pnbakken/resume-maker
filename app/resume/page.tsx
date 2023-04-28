@@ -1,4 +1,4 @@
-import ResumeBuilder from "@/components/forms/ResumeBuilder";
+import ResumeBuilder from "@/components/forms/resume-builder";
 
 const Resume = () => {
   return (
