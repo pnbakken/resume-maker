@@ -1,10 +1,18 @@
 "use client";
 
-import styles from "./index.style.module.scss";
+import style from "./index.style.module.scss";
+import PersonalInfo from "./personal-info";
 
 const ResumeBuilder = () => {
   return (
-    <form id="resume-builder" className={`${styles.resumeBuilder}`}></form>
+    <form
+      id="resume-builder"
+      className={`${style.resumeBuilder} large-component-width top-level-indent`}
+    >
+      <div>
+        <PersonalInfo />
+      </div>
+    </form>
   );
 };
 
