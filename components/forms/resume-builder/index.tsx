@@ -5,14 +5,19 @@ import PersonalInfo from "./personal-info";
 
 const ResumeBuilder = () => {
   return (
-    <form
-      id="resume-builder"
-      className={`${style.resumeBuilder} xl-component-width full-width radius-md flex-c gap-md`}
-    >
-      <div>
-        <PersonalInfo />
+    <>
+      <div className="full-width xl-component-width">
+        <h1>Create your resume</h1>
       </div>
-    </form>
+      <form
+        id="resume-builder"
+        className={`${style.resumeBuilder} xl-component-width full-width radius-md flex-c gap-md`}
+      >
+        <div>
+          <PersonalInfo />
+        </div>
+      </form>
+    </>
   );
 };
 
