@@ -1,6 +1,28 @@
 .formGroup {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     gap: 8px;
+    min-width: 20rem;
+
+    @media(max-width: 768px) {
+        min-width: 100%;
+    }
+
+    label {
+        font-weight: 500;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px 4px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+
+        &:focus {
+            border: 1px solid #000;
+            background: #fdfdfd;
+        }
+    }
 }

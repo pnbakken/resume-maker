@@ -7,7 +7,7 @@ const ResumeBuilder = () => {
   return (
     <form
       id="resume-builder"
-      className={`${style.resumeBuilder} large-component-width top-level-indent`}
+      className={`${style.resumeBuilder} xl-component-width full-width radius-md flex-c gap-md`}
     >
       <div>
         <PersonalInfo />

@@ -2,7 +2,7 @@ import ResumeBuilder from "@/components/forms/resume-builder";
 
 const Resume = () => {
   return (
-    <main>
+    <main className="full-width flex-c align-center">
       <ResumeBuilder />
     </main>
   );
