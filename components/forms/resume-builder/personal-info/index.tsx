@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./index.style.module.scss";
 import { ControlGroup, FormRow } from "../../form-utilities";
 
 const PersonalInfo = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+
   return (
     <fieldset className={`${style.personalInfo} flex-c gap-md`}>
       <h2>Personal Info</h2>
