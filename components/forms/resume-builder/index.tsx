@@ -5,7 +5,7 @@ import PersonalInfo from "./personal-info";
 
 const ResumeBuilder = () => {
   return (
-    <div className="top-level-indent">
+    <div className="full-width flex-c align-center top-level-indent">
       <div className="full-width xl-component-width">
         <h1>Create your resume</h1>
       </div>

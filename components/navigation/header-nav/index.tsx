@@ -3,7 +3,7 @@ import style from "./index.style.module.scss";
 
 const HeaderNav = () => {
   return (
-    <div className="top-level-indent">
+    <div className="full-width flex-c align-center top-level-indent">
       <nav
         className={`${style.headerNav} flex-r full-width xl-component-width`}
       >
