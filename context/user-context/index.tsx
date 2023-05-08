@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 
 import { Dispatch, SetStateAction, createContext, useState } from "react";
 import useLocalStorage from "@/hooks/use-local-storage";
@@ -16,3 +16,5 @@ export const UserProvider: React.FC = ({ children }) => {
 };
 
 export default UserContext;
+
+//Q: ./context/user-context/index.tsx Module parse failed: Bad character escape sequence (2:94)

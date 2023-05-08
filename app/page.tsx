@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <main className={`${styles.main} flex-c full-width align-center`}>
-        <Link href="/resume">Create your resume</Link>
-      </main>
-    </>
+    <main
+      className={`${styles.main} flex-c full-width align-center justify-center`}
+    >
+      <Link href="/resume">Create your resume</Link>
+    </main>
   );
 }

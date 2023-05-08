@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 
 import { Dispatch, SetStateAction, createContext } from "react";
 import useLocalStorage from "../../hooks/use-local-storage/";
@@ -18,3 +18,5 @@ export const ResumeProvider: React.FC = ({ children }) => {
     </ResumeContext.Provider>
   );
 };
+
+export default ResumeContext;
