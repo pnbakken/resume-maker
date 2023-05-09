@@ -1,5 +1,4 @@
 "use client";
-
 import ResumeContext from "@/context/resume-context";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -7,6 +6,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import style from "./index.style.module.scss";
 import { BsFillTelephoneFill, BsFillEnvelopeFill } from "react-icons/bs";
 import { toast } from "react-hot-toast";
+import Link from "next/link";
 
 const Resume = () => {
   const [resume, setResume] = useContext(ResumeContext);
@@ -15,47 +15,47 @@ const Resume = () => {
   const [isMounted, setIsmounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const resumeOutputRef = useRef(null);
+  const [iframeSrc, setIframeSrc] = useState<string | null>(null);
 
   useEffect(() => {
     console.log(resume);
     setIsmounted(true);
     const generatePDF = async () => {
+      console.log("Generating output");
       const resumeOutput = document.getElementById("resume-output");
       if (resumeOutput) {
-        try {
-          const canvas = await html2canvas(resumeOutput);
-          const pdf = new jsPDF("p", "mm", "a4");
-          const imgData = canvas.toDataURL("image/png");
+        const canvas = await html2canvas(resumeOutput);
+        const pdf = new jsPDF("p", "mm", "a4");
+        const imgData = canvas.toDataURL("image/jpeg", 0.7);
+        console.log(canvas);
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 297; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
 
-          const imgWidth = 210; // A4 width in mm
-          const pageHeight = 297; // A4 height in mm
-          const imgHeight = (canvas.height * imgWidth) / canvas.width;
-          let heightLeft = imgHeight;
+        let position = 0;
 
-          let position = 0;
+        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
 
-          pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
           heightLeft -= pageHeight;
-
-          while (heightLeft >= 0) {
-            position = heightLeft - imgHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-          }
-
-          setPdfData(pdf.output("datauristring"));
-          console.log("PDF DATA IS ::::: ");
-          console.log(pdfData);
-          setPdfInstance(pdf);
-          setIsLoading(false);
-        } catch (error) {
-          console.log(error);
         }
+
+        setPdfData(pdf.output("datauristring"));
+        console.log("PDF DATA IS ::::: ");
+        console.log(pdfData);
+        setPdfInstance(pdf);
+        setIsLoading(false);
       }
     };
-    resume && generatePDF();
-  }, []);
+    setTimeout(() => {
+      generatePDF();
+    }, 500);
+  }, [resume]);
 
   const downloadPdf = () => {
     if (pdfInstance) {
@@ -99,12 +99,17 @@ const Resume = () => {
                 )}
               </div>
             </div>
-            <div className={`${style.resumeSidebar} full-height`}></div>
+            <div className={`${style.resumeSidebar} full-height flex-c`}>
+              <Link href="/">A link</Link>
+            </div>
           </div>
         )}
       </div>
 
-      <button onClick={downloadPdf}>Download PDF</button>
+      <button onClick={downloadPdf} disabled={isLoading}>
+        Download PDF
+      </button>
+      <>{isLoading && <div>Generating PDF...</div>}</>
     </div>
   );
 };

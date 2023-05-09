@@ -24,6 +24,12 @@
     .resumeSidebar {
         background-color: $colour-primary;
         width: 68mm;
+        padding: 2rem;
+        color: $colour-white;
+
+        a {
+            color: $colour-white;
+        }
     }
 }
 
