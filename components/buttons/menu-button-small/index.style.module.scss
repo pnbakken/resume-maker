@@ -1,6 +1,5 @@
 .menuButtonSmall {
   font-weight: 500;
-  color: #225522;
   border-bottom: 1px solid none;
   padding: 0.25rem;
   transition: 0.3s all ease-in-out;
@@ -8,4 +7,8 @@
 
 .menuButtonSmall:hover {
   border-bottom: 1px solid #225522;
+}
+
+.warning {
+  color: red;
 }

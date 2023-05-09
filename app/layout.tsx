@@ -1,4 +1,6 @@
 import Header from "@/components/header";
+import ClientComponent from "@/components/utility/client-component";
+import Toasty from "@/components/utility/toasty";
 import "@/styles/globals.scss";
 import { Inter } from "next/font/google";
 
@@ -12,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Toasty />
         <Header />
         {children}
         <footer>footer</footer>

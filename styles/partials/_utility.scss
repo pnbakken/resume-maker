@@ -276,10 +276,16 @@
 }
 
 .pseudo-button {
-    padding: 4px 16px;
+    padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     text-decoration: none;
     background: $colour-primary;
+    color: $colour-white;
+}
+
+.pseudo-button:hover {
+    opacity: 0.8;
+    text-decoration: none;
 }
 
 .bordered {

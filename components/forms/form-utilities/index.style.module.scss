@@ -1,3 +1,14 @@
+@import "/styles/partials/colour-variables";
+
+.fieldset {
+    background-color: $colour-secondary-background;
+    padding: 1.5rem 2rem;
+
+    @media (max-width: 465px) {
+        padding: 1.5rem 0.5rem;
+    }
+}
+
 .fieldset:disabled {
     opacity: 0.5;
 }

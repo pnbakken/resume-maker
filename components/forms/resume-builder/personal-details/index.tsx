@@ -9,7 +9,7 @@ import {
 } from "../../form-utilities";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import ResumeContext from "@/context/resume-context";
-
+import { toast } from "react-hot-toast";
 const PersonalDetails = () => {
   const [resume, setResume] = useContext(ResumeContext);
   const [desiredTitle, setDesiredTitle] = useState(
@@ -82,6 +82,7 @@ const PersonalDetails = () => {
     }
 
     setResume(savedResume);
+    toast.success("Personal details saved!");
     setDisabled(false);
   }
 

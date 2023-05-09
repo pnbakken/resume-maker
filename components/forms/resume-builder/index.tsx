@@ -1,12 +1,18 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import style from "./index.style.module.scss";
 import PersonalDetails from "./personal-details";
 import ResumeContext from "@/context/resume-context";
+import EmploymentHistory from "./employment-history/";
+import ResumeMenu from "./resume-menu";
 
 const ResumeBuilder = () => {
   const [resume, setResume] = useContext(ResumeContext);
+
+  useEffect(() => {
+    console.log(resume);
+  }, []);
 
   return (
     <div className="full-width flex-c align-center top-level-indent">
@@ -15,11 +21,13 @@ const ResumeBuilder = () => {
       </div>
       <form
         id="resume-builder"
-        className={`${style.resumeBuilder} xl-component-width full-width radius-md flex-c gap-md`}
+        className={`${style.resumeBuilder} xl-component-width full-width flex-c gap-md`}
       >
-        <div>
-          <PersonalDetails />
-        </div>
+        <ResumeMenu />
+
+        <PersonalDetails />
+
+        <EmploymentHistory />
       </form>
     </div>
   );

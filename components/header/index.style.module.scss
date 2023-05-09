@@ -1,4 +1,6 @@
+@import "/styles/partials/colour-variables";
+
 .header {
     border-bottom: 1px solid #eee;
-    background: #fefeff;
+    background: $colour-secondary-background;
 }

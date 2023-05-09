@@ -3,7 +3,10 @@ import { BsChevronDown } from "react-icons/bs";
 
 export function Fieldset({ className = "", disabled = false, children }) {
   return (
-    <fieldset className={`${style.fieldset} ${className}`} disabled={disabled}>
+    <fieldset
+      className={`${style.fieldset} ${className} radius-md `}
+      disabled={disabled}
+    >
       {children}
     </fieldset>
   );

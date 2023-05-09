@@ -1,0 +1,32 @@
+@import "/styles/partials/colour-variables";
+
+
+
+.resumeOutput {
+
+
+    width: 210mm;
+    height: 297mm;
+    box-sizing: border-box;
+
+
+}
+
+.resumeTemplate {
+    background: $colour-white;
+
+
+
+    .resumeMain {
+        padding: 2rem;
+    }
+
+    .resumeSidebar {
+        background-color: $colour-primary;
+        width: 68mm;
+    }
+}
+
+.preview {
+    background-color: green;
+}
