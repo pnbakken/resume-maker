@@ -35,11 +35,11 @@ const ResumeViewer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [resumePDF, setResumePDF] = useState(null);
   const downloadPdf = async () => {};
-  const resume = workingResume;
+
   useEffect(() => {
     setIsMounted(true);
     setIsLoading(false);
-    console.log(resume && resume);
+    console.log(workingResume && workingResume);
   }, []);
 
   if (!isMounted) {
@@ -47,12 +47,12 @@ const ResumeViewer = () => {
   }
 
   return (
-    <div>
+    <div className="full-width">
       <div className="full-width flex-r tw-my-10">
         <Link href="/resume/">Edit</Link>
       </div>
 
-      {resume && (
+      {workingResume && (
         <PDFViewer
           style={{
             width: "90vw",
@@ -61,7 +61,7 @@ const ResumeViewer = () => {
             borderRadius: "10px",
           }}
         >
-          <ResumeAsPDF resume={resume} />
+          <ResumeAsPDF resume={workingResume} />
         </PDFViewer>
       )}
     </div>
@@ -79,7 +79,7 @@ function ResumeAsPDF({ resume }) {
     desiredTitle,
     country,
     city,
-  } = resume.personal_details;
+  } = resume.personal_details ? resume.personal_details : null;
 
   const themeColors = {
     primary: "#0d5ead",

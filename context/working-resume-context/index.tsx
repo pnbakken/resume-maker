@@ -1,9 +1,17 @@
 "use client";
 
 import useLocalStorage from "@/hooks/use-local-storage";
-import { createContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 
-const WorkingResumeContext = createContext([null, () => {}]);
+type WorkingResumeContextType = [
+  object | null,
+  Dispatch<SetStateAction<object | null>>
+];
+
+const WorkingResumeContext = createContext<WorkingResumeContextType>([
+  null,
+  () => {},
+]);
 
 export const WorkingResumeProvider = ({ children }) => {
   const [workingResume, setWorkingResume] = useLocalStorage(

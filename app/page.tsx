@@ -9,6 +9,7 @@ import ResumeCollectionContext, {
 import LanguageContext, { LanguageProvider } from "@/context/language-context";
 import { useContext } from "react";
 import ResumeCollection from "@/components/resume-collection";
+import { WorkingResumeProvider } from "@/context/working-resume-context";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -23,7 +24,9 @@ export default function Home() {
       <ClientComponent>
         <LanguageProvider>
           <ResumeCollectionProvider>
-            <ResumeCollection />
+            <WorkingResumeProvider>
+              <ResumeCollection />
+            </WorkingResumeProvider>
           </ResumeCollectionProvider>
         </LanguageProvider>
       </ClientComponent>
