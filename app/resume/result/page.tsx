@@ -1,6 +1,7 @@
-import Resume from "@/components/resume";
+import ResumeViewer from "@/components/resume-viewer";
 import ClientComponent from "@/components/utility/client-component";
-import { ResumeProvider } from "@/context/resume-context";
+import { ResumeCollectionProvider } from "@/context/resume-collection-context";
+import { WorkingResumeProvider } from "@/context/working-resume-context";
 
 const Result = () => {
   return (
@@ -8,9 +9,11 @@ const Result = () => {
       <div className="full-width top-level-indent flex-c align-center tw-my-10">
         <div className="full-width  flex-c align-center">
           <ClientComponent>
-            <ResumeProvider>
-              <Resume />
-            </ResumeProvider>
+            <ResumeCollectionProvider>
+              <WorkingResumeProvider>
+                <ResumeViewer />
+              </WorkingResumeProvider>
+            </ResumeCollectionProvider>
           </ClientComponent>
         </div>
       </div>

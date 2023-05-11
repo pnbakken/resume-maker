@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import style from "./index.style.module.scss";
-import ResumeContext from "@/context/resume-context";
+import ResumeContext from "@/context/resume-collection-context";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import { toast } from "react-hot-toast";
 

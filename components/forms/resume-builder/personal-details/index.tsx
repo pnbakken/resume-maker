@@ -8,10 +8,12 @@ import {
   FormRow,
 } from "../../form-utilities";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
-import ResumeContext from "@/context/resume-context";
+import ResumeContext from "@/context/resume-collection-context";
 import { toast } from "react-hot-toast";
+import WorkingResumeContext from "@/context/working-resume-context";
 const PersonalDetails = () => {
-  const [resume, setResume] = useContext(ResumeContext);
+  const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
+  const resume = workingResume;
   const [desiredTitle, setDesiredTitle] = useState(
     resume?.personal_details?.desiredTitle
       ? resume.personal_details.desiredTitle
@@ -54,9 +56,9 @@ const PersonalDetails = () => {
   function savePersonalDetails() {
     setDisabled(true);
     let savedResume;
-    if (resume) {
+    if (workingResume) {
       savedResume = {
-        ...resume,
+        ...workingResume,
         personal_details: {
           ...(firstName && { firstName: firstName }),
           ...(lastName && { lastName: lastName }),
@@ -81,7 +83,7 @@ const PersonalDetails = () => {
       };
     }
 
-    setResume(savedResume);
+    setWorkingResume(savedResume);
     toast.success("Personal details saved!");
     setDisabled(false);
   }

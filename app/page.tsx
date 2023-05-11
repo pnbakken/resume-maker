@@ -1,7 +1,14 @@
 import Image from "next/image";
-import styles from "./page.module.scss";
+import style from "./page.module.scss";
 import Link from "next/link";
 import { Metadata } from "next";
+import ClientComponent from "@/components/utility/client-component";
+import ResumeCollectionContext, {
+  ResumeCollectionProvider,
+} from "@/context/resume-collection-context";
+import LanguageContext, { LanguageProvider } from "@/context/language-context";
+import { useContext } from "react";
+import ResumeCollection from "@/components/resume-collection";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -11,9 +18,15 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main
-      className={`${styles.main} flex-c full-width align-center justify-center`}
+      className={`${style.main} flex-c full-width align-center justify-center`}
     >
-      <Link href="/resume">Create your resume</Link>
+      <ClientComponent>
+        <LanguageProvider>
+          <ResumeCollectionProvider>
+            <ResumeCollection />
+          </ResumeCollectionProvider>
+        </LanguageProvider>
+      </ClientComponent>
     </main>
   );
 }

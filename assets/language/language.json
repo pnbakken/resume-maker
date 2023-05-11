@@ -1,0 +1,20 @@
+{
+  "english": {
+    "icon": ":flag_gb:",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "country": "Country",
+    "city": "City"
+  },
+  "norsk": {
+    "icon": ":flag_no:",
+    "firstName": "Fornavn",
+    "lastName": "Etternavn",
+    "email": "E-post",
+    "phone": "Telefon",
+    "country": "Land",
+    "city": "By"
+  }
+}

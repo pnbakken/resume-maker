@@ -3,15 +3,20 @@
 import { useContext, useEffect } from "react";
 import style from "./index.style.module.scss";
 import PersonalDetails from "./personal-details";
-import ResumeContext from "@/context/resume-context";
+import ResumeContext from "@/context/resume-collection-context";
 import EmploymentHistory from "./employment-history/";
 import ResumeMenu from "./resume-menu";
+import WorkingResumeContext from "@/context/working-resume-context";
 
 const ResumeBuilder = () => {
-  const [resume, setResume] = useContext(ResumeContext);
+  const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
 
   useEffect(() => {
-    console.log(resume);
+    if (workingResume) {
+      console.log(workingResume);
+    } else {
+      console.log("no working resume");
+    }
   }, []);
 
   return (

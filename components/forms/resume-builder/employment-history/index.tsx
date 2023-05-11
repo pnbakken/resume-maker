@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import style from "./index.style.module.scss";
 import { Collapsible, Fieldset, FieldsetHeader } from "../../form-utilities";
-import ResumeContext from "@/context/resume-context";
+import ResumeContext from "@/context/resume-collection-context";
 
 const EmploymentHistory = () => {
   const [resume, setResume] = useContext(ResumeContext);
