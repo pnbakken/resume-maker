@@ -48,16 +48,15 @@ const ResumeViewer = () => {
 
   return (
     <div className="full-width">
-      <div className="full-width flex-r tw-my-10">
+      <div className="full-width flex-r tw-my-5">
         <Link href="/resume/">Edit</Link>
       </div>
 
       {workingResume && (
         <PDFViewer
           style={{
-            width: "90vw",
+            width: "100%",
             minHeight: "100vh",
-            maxWidth: "1000px",
             borderRadius: "10px",
           }}
         >

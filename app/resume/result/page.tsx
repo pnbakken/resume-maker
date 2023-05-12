@@ -6,8 +6,8 @@ import { WorkingResumeProvider } from "@/context/working-resume-context";
 const Result = () => {
   return (
     <main>
-      <div className="full-width top-level-indent flex-c align-center tw-my-10">
-        <div className="full-width  flex-c align-center">
+      <div className="full-width top-level-indent flex-c align-center">
+        <div className="full-width xl-component-width flex-c align-center">
           <ClientComponent>
             <ResumeCollectionProvider>
               <WorkingResumeProvider>
