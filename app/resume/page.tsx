@@ -14,7 +14,9 @@ const Resume = () => {
       <ClientComponent>
         <ResumeCollectionProvider>
           <WorkingResumeProvider>
-            <ResumeBuilder />
+            <LanguageProvider>
+              <ResumeBuilder />
+            </LanguageProvider>
           </WorkingResumeProvider>
         </ResumeCollectionProvider>
       </ClientComponent>

@@ -6,8 +6,11 @@ import ResumeCollectionContext from "@/context/resume-collection-context";
 import WorkingResumeContext from "@/context/working-resume-context";
 import { useRouter } from "next/navigation";
 import { ControlGroup } from "../../form-utilities";
+import { getLanguageInfo } from "public/assets/language";
+import { capitalizeFirstLetter } from "@/lib/functions";
+import { useLanguage } from "@/context/language-context";
 
-const ResumeMenu = ({ register, invokeDelete }) => {
+const ResumeMenu = ({ register, invokeDelete, language }) => {
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
 
@@ -17,11 +20,13 @@ const ResumeMenu = ({ register, invokeDelete }) => {
     >
       <div className="flex-r gap-sm">
         <ControlGroup>
-          <label htmlFor="resume-name">Resume name</label>
+          <label htmlFor="resume-name">{language.resumeName}</label>
           <input type="text" {...register("resumeName")} />
         </ControlGroup>
       </div>
-      <div>Language select</div>
+      <div>
+        <LanguageSelect register={register} />
+      </div>
       <div>
         <MenuButtonSmall
           className="warning"
@@ -29,7 +34,7 @@ const ResumeMenu = ({ register, invokeDelete }) => {
           type="button"
           action={invokeDelete}
         >
-          Delete Resume
+          {language.deleteResume}
         </MenuButtonSmall>
       </div>
     </div>
@@ -37,3 +42,30 @@ const ResumeMenu = ({ register, invokeDelete }) => {
 };
 
 export default ResumeMenu;
+
+function LanguageSelect({ register }) {
+  const { setLanguage } = useLanguage();
+  function handleLanguageChange(e) {
+    setLanguage(e.target.value);
+  }
+
+  return (
+    <select
+      className={`${style.languageSelector} flex-c gap-sm`}
+      {...register("resumeLanguage")}
+      onChange={(e) => handleLanguageChange(e)}
+    >
+      {getLanguageInfo().map((lang) => {
+        return (
+          <option
+            key={lang.langCode}
+            value={lang.langName}
+            className={style.selectItem}
+          >
+            {lang.icon} {capitalizeFirstLetter(lang.langName)}
+          </option>
+        );
+      })}
+    </select>
+  );
+}

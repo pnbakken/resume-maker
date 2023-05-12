@@ -12,10 +12,16 @@ import { debounce, isEqual } from "lodash";
 import ResumeCollectionContext from "@/context/resume-collection-context";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/language-context";
+import { deepEqual } from "assert";
+import { isDeepStrictEqual } from "util";
 
 const ResumeBuilder = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const initialCopy = workingResume;
+  const { setLanguage, languageData } = useLanguage();
+
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
   const [deletedResume, setDeletedResume] = useState(false);
   const defaultValues = initialCopy || { id: Date.now() };
@@ -27,13 +33,13 @@ const ResumeBuilder = () => {
   const debouncedSaveToWorkingResume = debounce((data) => {
     !deletedResume && setWorkingResume(data);
     console.log("saving working item");
-  }, 3000);
+  }, 1500);
 
   const debouncedSaveToResumeCollection = debounce((data) => {
     !deletedResume && setWorkingResume(data);
     !deletedResume && saveResumeToCollection(data);
     console.log("Saving to collection");
-  }, 30 * 1000);
+  }, 20 * 1000);
 
   function onSubmit(data) {
     setWorkingResume(data);
@@ -59,12 +65,17 @@ const ResumeBuilder = () => {
   }
 
   useEffect(() => {
+    setIsMounted(true);
+    console.log(workingResume);
+    workingResume && setLanguage(workingResume.resumeLanguage);
+  }, []);
+
+  useEffect(() => {
     if (!isEqual(watchAllFields, prevWatchAllFieldsRef.current)) {
-      if (workingResume && !deletedResume) {
+      if (!deletedResume) {
         debouncedSaveToWorkingResume(watchAllFields);
         debouncedSaveToResumeCollection(watchAllFields);
       }
-      prevWatchAllFieldsRef.current = watchAllFields;
     }
 
     return () => {
@@ -73,10 +84,17 @@ const ResumeBuilder = () => {
     };
   }, [watchAllFields, workingResume]);
 
+  if (!isMounted) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="full-width flex-c align-center top-level-indent">
       <div className="full-width xl-component-width">
-        <h1>Create your resume</h1>
+        <h1>
+          {(workingResume && workingResume.resumeName) ||
+            languageData.pageHeading}
+        </h1>
       </div>
       <form
         id="resume-builder"
@@ -84,11 +102,15 @@ const ResumeBuilder = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         {workingResume && <>{workingResume.id}</>}
-        <ResumeMenu register={register} invokeDelete={deleteResume} />
+        <ResumeMenu
+          register={register}
+          invokeDelete={deleteResume}
+          language={languageData}
+        />
 
-        <PersonalDetails register={register} />
+        <PersonalDetails register={register} language={languageData} />
 
-        <EmploymentHistory register={register} />
+        <EmploymentHistory register={register} language={languageData} />
         <button type="submit" value="save">
           Save resume
         </button>

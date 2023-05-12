@@ -11,13 +11,13 @@ import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import ResumeContext from "@/context/resume-collection-context";
 import { toast } from "react-hot-toast";
 import WorkingResumeContext from "@/context/working-resume-context";
-const PersonalDetails = ({ register }) => {
+import { useLanguage } from "@/context/language-context";
+const PersonalDetails = ({ register, language }) => {
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const resume = workingResume;
 
   const [show, setShow] = useState(false);
   const [disabled, setDisabled] = useState(false);
-
   function toggleShow(): void {
     setShow(!show);
   }
@@ -27,11 +27,11 @@ const PersonalDetails = ({ register }) => {
       className={`${style.personalDetails} flex-c gap-md`}
       disabled={disabled}
     >
-      <FieldsetHeader title="Personal Details" callback={toggleShow} />
+      <FieldsetHeader title={language.personalDetails} callback={toggleShow} />
       <Collapsible show={show}>
         <FormRow>
           <ControlGroup>
-            <label htmlFor="desired-title">Desired Title</label>
+            <label htmlFor="desired-title">{language.desiredTitle}</label>
             <input
               type="text"
               id="desired-title"
@@ -42,7 +42,7 @@ const PersonalDetails = ({ register }) => {
         </FormRow>
         <FormRow>
           <ControlGroup>
-            <label htmlFor="first-name">First Name</label>
+            <label htmlFor="first-name">{language.firstName}</label>
             <input
               type="text"
               id="first-name"
@@ -51,7 +51,7 @@ const PersonalDetails = ({ register }) => {
             />
           </ControlGroup>
           <ControlGroup>
-            <label htmlFor="last-name">Last Name</label>
+            <label htmlFor="last-name">{language.lastName}</label>
             <input
               type="text"
               id="last-name"
@@ -62,7 +62,7 @@ const PersonalDetails = ({ register }) => {
         </FormRow>
         <FormRow>
           <ControlGroup>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{language.email}</label>
             <input
               type="email"
               id="email"
@@ -71,7 +71,7 @@ const PersonalDetails = ({ register }) => {
             />
           </ControlGroup>
           <ControlGroup>
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone">{language.phone}</label>
             <input
               type="tel"
               id="phone"
@@ -82,7 +82,7 @@ const PersonalDetails = ({ register }) => {
         </FormRow>
         <FormRow>
           <ControlGroup>
-            <label htmlFor="country">Country</label>
+            <label htmlFor="country">{language.country}</label>
             <input
               type="text"
               id="country"
@@ -91,7 +91,7 @@ const PersonalDetails = ({ register }) => {
             />
           </ControlGroup>
           <ControlGroup>
-            <label htmlFor="city">City</label>
+            <label htmlFor="city">{language.city}</label>
             <input
               type="text"
               id="city"
@@ -102,7 +102,7 @@ const PersonalDetails = ({ register }) => {
         </FormRow>
         <div className="flex-r justify-end full-width">
           <MenuButtonSmall type="submit" value="save details">
-            Save
+            {language.saveResume}
           </MenuButtonSmall>
         </div>
       </Collapsible>

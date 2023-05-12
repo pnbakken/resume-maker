@@ -47,22 +47,35 @@ const ResumeViewer = () => {
   }
 
   return (
-    <div className="full-width">
-      <div className="full-width flex-r tw-my-5">
-        <Link href="/resume/">Edit</Link>
+    <div className="full-width flex-c gap-md tw-mb-10">
+      <div>
+        <div className="full-width flex-r wrap justify-between gap-md tw-my-5">
+          <Link href="/resume/">Edit</Link>
+          <div>
+            <PDFDownloadLink
+              document={<ResumeAsPDF resume={workingResume} />}
+              fileName={
+                (workingResume && workingResume.resumeName) || "resume.pdf"
+              }
+            >
+              {({ loading }) =>
+                loading ? "Loading document..." : "Download PDF"
+              }
+            </PDFDownloadLink>
+          </div>
+        </div>
+        {workingResume && (
+          <PDFViewer
+            style={{
+              width: "100%",
+              minHeight: "90vh",
+              borderRadius: "10px",
+            }}
+          >
+            <ResumeAsPDF resume={workingResume} />
+          </PDFViewer>
+        )}
       </div>
-
-      {workingResume && (
-        <PDFViewer
-          style={{
-            width: "100%",
-            minHeight: "100vh",
-            borderRadius: "10px",
-          }}
-        >
-          <ResumeAsPDF resume={workingResume} />
-        </PDFViewer>
-      )}
     </div>
   );
 };
@@ -78,7 +91,9 @@ function ResumeAsPDF({ resume }) {
     desiredTitle,
     country,
     city,
-  } = resume.personal_details ? resume.personal_details : null;
+  } = resume.personal_details || {};
+
+  const { resumeName, resumeLanguage } = resume || {};
 
   const themeColors = {
     primary: "#0d5ead",
@@ -131,7 +146,7 @@ function ResumeAsPDF({ resume }) {
   });
 
   return (
-    <Document>
+    <Document title={resumeName || ""}>
       <Page size="A4" style={styles.page}>
         <View style={styles.pageContainer}>
           <View style={styles.resumeHeader}>

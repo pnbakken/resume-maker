@@ -1,0 +1,19 @@
+{
+  "icon": ":flag_gb:",
+  "code": "en",
+  "langName": "english",
+  "pageHeading": "Create your resume",
+  "resumeName": "Resume name",
+  "deleteResume": "Delete resume",
+  "saveResume": "Save resume",
+  "personalDetails": "Personal details",
+  "desiredTitle": "Desired title",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "email": "Email",
+  "phone": "Phone",
+  "country": "Country",
+  "city": "City",
+
+  "employmentHistory": "Employment history"
+}

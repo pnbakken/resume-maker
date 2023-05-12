@@ -1,0 +1,19 @@
+{
+  "icon": ":flag_no:",
+  "code": "no",
+  "langName": "norsk",
+  "pageHeading": "Lag din CV",
+  "resumeName": "Navn på CV",
+  "deleteResume": "Slett CV",
+  "saveResume": "Lagre CV",
+  "personalDetails": "Personlige Opplysninger",
+  "desiredTitle": "Ønsket Tittel",
+  "firstName": "Fornavn",
+  "lastName": "Etternavn",
+  "email": "E-post",
+  "phone": "Telefon",
+  "country": "Land",
+  "city": "By",
+
+  "employmentHistory": "Arbeidserfaring"
+}
