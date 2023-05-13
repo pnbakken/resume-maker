@@ -7,6 +7,7 @@ import style from "./index.style.module.scss";
 import WorkingResumeContext from "@/context/working-resume-context";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import _ from "lodash";
 
 export default function ResumeCollection({}) {
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
@@ -14,10 +15,18 @@ export default function ResumeCollection({}) {
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
 
+  const [sortCriteria, setSortCriteria] = useState("dateCreated");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const [displayResumes, setDisplayResumes] = useState(
+    _.orderBy(resumes, sortCriteria, sortOrder) || []
+  );
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  useEffect(() => {
+    setDisplayResumes(_.orderBy(resumes, sortCriteria, sortOrder) || []);
+  }, [resumes, sortCriteria, sortOrder]);
   function deleteResume(id) {
     if (resumes) {
       const newResumes = resumes.filter((resume) => resume.id !== id);
@@ -54,7 +63,7 @@ export default function ResumeCollection({}) {
     return <div>Loading...</div>;
   }
 
-  if (!resumes || resumes.length === 0) {
+  if (!displayResumes || displayResumes.length === 0) {
     return (
       <div className="">
         <Link href="/resume">Create your first resume</Link>
@@ -62,17 +71,26 @@ export default function ResumeCollection({}) {
     );
   }
   return (
-    <div className={`full-width top-level-indent flex-c align-center`}>
+    <div className={`full-width top-level-indent flex-c align-center tw-my-32`}>
       <div
         className={`${style.resumeCollection} full-width xl-component-width flex-c align-center radius-md gap-md`}
       >
         <div className="full-width">
           <h2>Your Resumes</h2>
         </div>
-
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              setSortCriteria("dateModified");
+            }}
+          >
+            Sort by date modified
+          </button>
+        </div>
         <div className={`${style.resumeListContainer} full-width`}>
           <ul className={`${style.resumeList} flex-r wrap gap-md`}>
-            {resumes.map((resume) => {
+            {displayResumes.map((resume) => {
               return (
                 <li
                   key={resume.id}

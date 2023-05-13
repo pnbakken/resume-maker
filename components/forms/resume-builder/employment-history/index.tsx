@@ -3,7 +3,7 @@ import style from "./index.style.module.scss";
 import { Collapsible, Fieldset, FieldsetHeader } from "../../form-utilities";
 import ResumeContext from "@/context/resume-collection-context";
 
-const EmploymentHistory = ({ language }) => {
+const EmploymentHistory = ({ register, language }) => {
   const [resume, setResume] = useContext(ResumeContext);
   const [show, setShow] = useState(false);
 
@@ -12,7 +12,7 @@ const EmploymentHistory = ({ language }) => {
   }
 
   return (
-    <Fieldset className={`${style.EmploymentHistory} flex-c gap-md`}>
+    <Fieldset className={`${style.employmentHistory} flex-c gap-md`}>
       <FieldsetHeader
         title={language.employmentHistory}
         callback={handleShow}
@@ -23,3 +23,11 @@ const EmploymentHistory = ({ language }) => {
 };
 
 export default EmploymentHistory;
+
+function EmploymentHistoryManager(register, language) {
+  return (
+    <div className={`${style.employmentHistoryManager}`}>
+      This is the employment history manager
+    </div>
+  );
+}

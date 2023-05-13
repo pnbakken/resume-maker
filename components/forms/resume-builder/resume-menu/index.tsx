@@ -16,7 +16,7 @@ const ResumeMenu = ({ register, invokeDelete, language }) => {
 
   return (
     <div
-      className={`${style.resumeMenu} flex-r wrap full-width justify-between gap-sm radius-md align-center`}
+      className={`${style.resumeMenu} flex-r wrap full-width gap-sm radius-md align-end`}
     >
       <div className="flex-r gap-sm">
         <ControlGroup>
@@ -27,7 +27,7 @@ const ResumeMenu = ({ register, invokeDelete, language }) => {
       <div>
         <LanguageSelect register={register} />
       </div>
-      <div>
+      <div className="flex-r justify-self-end">
         <MenuButtonSmall
           className="warning"
           value="delete resume"
@@ -50,22 +50,27 @@ function LanguageSelect({ register }) {
   }
 
   return (
-    <select
-      className={`${style.languageSelector} flex-c gap-sm`}
-      {...register("resumeLanguage")}
-      onChange={(e) => handleLanguageChange(e)}
-    >
-      {getLanguageInfo().map((lang) => {
-        return (
-          <option
-            key={lang.langCode}
-            value={lang.langName}
-            className={style.selectItem}
-          >
-            {lang.icon} {capitalizeFirstLetter(lang.langName)}
-          </option>
-        );
-      })}
-    </select>
+    <ControlGroup>
+      <label htmlFor="language-selector">Language</label>
+      <select
+        id="language-selector"
+        className={`${style.languageSelector} flex-c gap-sm`}
+        {...register("resumeLanguage")}
+        onChange={(e) => handleLanguageChange(e)}
+      >
+        {getLanguageInfo().map((lang) => {
+          return (
+            <option
+              key={lang.langCode}
+              value={lang.langName}
+              className={`? ${style.selectItem} full-width flex-r justify-between gap-sm`}
+            >
+              <div>{lang.icon && `${lang.icon} `}</div>
+              <div>{capitalizeFirstLetter(lang.langName)}</div>
+            </option>
+          );
+        })}
+      </select>
+    </ControlGroup>
   );
 }

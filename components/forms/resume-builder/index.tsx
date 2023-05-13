@@ -24,7 +24,11 @@ const ResumeBuilder = () => {
 
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
   const [deletedResume, setDeletedResume] = useState(false);
-  const defaultValues = initialCopy || { id: Date.now() };
+  const defaultValues = initialCopy || {
+    id: Date.now(),
+    dateCreated: new Date(Date.now()),
+  };
+
   const router = useRouter();
   const prevWatchAllFieldsRef = useRef();
   const { register, watch, handleSubmit } = useForm({ defaultValues });
@@ -33,7 +37,7 @@ const ResumeBuilder = () => {
   const debouncedSaveToWorkingResume = debounce((data) => {
     !deletedResume && setWorkingResume(data);
     console.log("saving working item");
-  }, 1500);
+  }, 10000);
 
   const debouncedSaveToResumeCollection = debounce((data) => {
     !deletedResume && setWorkingResume(data);
@@ -42,6 +46,7 @@ const ResumeBuilder = () => {
   }, 20 * 1000);
 
   function onSubmit(data) {
+    data.dateModified = new Date(Date.now());
     setWorkingResume(data);
     saveResumeToCollection(data);
     toast.success("Saved!");
@@ -68,6 +73,8 @@ const ResumeBuilder = () => {
     setIsMounted(true);
     console.log(workingResume);
     workingResume && setLanguage(workingResume.resumeLanguage);
+    if (workingResume && !workingResume.dateCreated)
+      workingResume.dateCreated = Date.now();
   }, []);
 
   useEffect(() => {
@@ -82,7 +89,9 @@ const ResumeBuilder = () => {
       debouncedSaveToResumeCollection.cancel();
       debouncedSaveToWorkingResume.cancel();
     };
-  }, [watchAllFields, workingResume]);
+  }, [watchAllFields]);
+
+  useEffect(() => {});
 
   if (!isMounted) {
     return <div>Loading...</div>;
@@ -95,6 +104,22 @@ const ResumeBuilder = () => {
           {(workingResume && workingResume.resumeName) ||
             languageData.pageHeading}
         </h1>
+        <div>
+          Created:{" "}
+          {(workingResume &&
+            new Date(workingResume.dateCreated).toLocaleDateString()) ||
+            "No date set"}
+        </div>
+        <div>
+          Modified:{" "}
+          {(workingResume &&
+            workingResume.dateModified &&
+            new Date(workingResume.dateModified).toLocaleDateString()) ||
+            "Never"}{" "}
+          {workingResume &&
+            workingResume.dateModified &&
+            new Date(workingResume.dateModified).toLocaleTimeString()}
+        </div>
       </div>
       <form
         id="resume-builder"
