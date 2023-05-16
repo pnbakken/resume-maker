@@ -156,6 +156,9 @@
     }
 }
 
+.no-padding {
+    padding: 0 !important;
+}
 
 /*
     Sizing
@@ -198,6 +201,13 @@
     max-width: 360px;
 }
 
+.standard-controlgroup-width {
+    min-width: 20rem;
+}
+
+.smaller-controlgroup-width {
+    min-width: 15rem;
+}
 
 
 /*

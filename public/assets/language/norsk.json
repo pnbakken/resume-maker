@@ -17,6 +17,23 @@
   "personalIntroduction": "Personlig introduksjon",
 
   "employmentHistory": "Arbeidserfaring",
-
+  "companyName": "Navn på bedrift",
+  "position": "Stilling",
+  "employmentStartDate": "Start dato",
+  "employmentEndDate": "Slutt dato",
+  "stillAtCompany": "Jobber fremdeles",
+  "employmentDescription": "Beskrivelse",
+  "addEmployment": "Legg til arbeid",
+  "removeEmployment": "Fjern arbeid",
+  "education": "Utdanning",
+  "institutionName": "Navn på skole/institusjon",
+  "degree": "Grad oppnådd",
+  "fieldOfStudy": "Studieretning",
+  "educationStartDate": "Start dato",
+  "educationEndDate": "Slutt dato",
+  "stillStudying": "Studerer fremdeles",
+  "educationDescription": "Beskrivelse",
+  "addEducation": "Legg til utdanning",
+  "removeEducation": "Fjern utdanning",
   "words": "ord"
 }

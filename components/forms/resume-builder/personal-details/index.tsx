@@ -31,7 +31,7 @@ const PersonalDetails = ({ register, language, watch }) => {
       <FieldsetHeader title={language.personalDetails} callback={toggleShow} />
       <Collapsible show={show}>
         <FormRow>
-          <ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="desired-title">{language.desiredTitle}</label>
             <input
               type="text"
@@ -42,7 +42,7 @@ const PersonalDetails = ({ register, language, watch }) => {
           </ControlGroup>
         </FormRow>
         <FormRow>
-          <ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="first-name">{language.firstName}</label>
             <input
               type="text"
@@ -51,7 +51,7 @@ const PersonalDetails = ({ register, language, watch }) => {
               {...register("personal_details.firstName")}
             />
           </ControlGroup>
-          <ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="last-name">{language.lastName}</label>
             <input
               type="text"
@@ -62,7 +62,7 @@ const PersonalDetails = ({ register, language, watch }) => {
           </ControlGroup>
         </FormRow>
         <FormRow>
-          <ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="email">{language.email}</label>
             <input
               type="email"
@@ -71,7 +71,7 @@ const PersonalDetails = ({ register, language, watch }) => {
               {...register("personal_details.emailAddress")}
             />
           </ControlGroup>
-          <ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="phone">{language.phone}</label>
             <input
               type="tel"
@@ -82,7 +82,7 @@ const PersonalDetails = ({ register, language, watch }) => {
           </ControlGroup>
         </FormRow>
         <FormRow>
-          <ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="country">{language.country}</label>
             <input
               type="text"
@@ -91,7 +91,7 @@ const PersonalDetails = ({ register, language, watch }) => {
               {...register("personal_details.country")}
             />
           </ControlGroup>
-          <ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="city">{language.city}</label>
             <input
               type="text"

@@ -17,6 +17,27 @@
   "personalIntroduction": "Personal introduction",
 
   "employmentHistory": "Employment history",
+  "companyName": "Company name",
+  "position": "Position",
+  "employmentStartDate": "Start date",
+  "employmentEndDate": "End date",
+  "stillAtCompany": "Still at company",
+  "employmentDescription": "Description",
+
+  "addEmployment": "Add employment",
+  "removeEmployment": "Remove employment",
+
+  "education": "Education",
+  "institutionName": "Institution name",
+  "degree": "Degree",
+  "fieldOfStudy": "Field of study",
+  "educationStartDate": "Start date",
+  "educationEndDate": "End year",
+  "stillStudying": "Still studying",
+  "educationDescription": "Description",
+
+  "addEducation": "Add education",
+  "removeEducation": "Remove education",
 
   "words": "words"
 }

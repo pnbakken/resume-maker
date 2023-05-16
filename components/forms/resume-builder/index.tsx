@@ -31,7 +31,7 @@ const ResumeBuilder = () => {
 
   const router = useRouter();
   const prevWatchAllFieldsRef = useRef();
-  const { register, watch, handleSubmit } = useForm({ defaultValues });
+  const { register, watch, handleSubmit, control } = useForm({ defaultValues });
   const watchAllFields = watch();
 
   const debouncedSaveToWorkingResume = debounce((data) => {
@@ -139,7 +139,11 @@ const ResumeBuilder = () => {
           watch={watch}
         />
 
-        <EmploymentHistory register={register} language={languageData} />
+        <EmploymentHistory
+          register={register}
+          language={languageData}
+          control={control}
+        />
         <button type="submit" value="save">
           Save resume
         </button>
