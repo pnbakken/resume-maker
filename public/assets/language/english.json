@@ -14,6 +14,9 @@
   "phone": "Phone",
   "country": "Country",
   "city": "City",
+  "personalIntroduction": "Personal introduction",
 
-  "employmentHistory": "Employment history"
+  "employmentHistory": "Employment history",
+
+  "words": "words"
 }

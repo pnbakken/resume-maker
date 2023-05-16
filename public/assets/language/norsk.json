@@ -14,6 +14,9 @@
   "phone": "Telefon",
   "country": "Land",
   "city": "By",
+  "personalIntroduction": "Personlig introduksjon",
 
-  "employmentHistory": "Arbeidserfaring"
+  "employmentHistory": "Arbeidserfaring",
+
+  "words": "ord"
 }

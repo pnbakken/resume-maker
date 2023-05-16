@@ -12,12 +12,16 @@ export function Fieldset({ className = "", disabled = false, children }) {
   );
 }
 
-export function ControlGroup({ children }) {
-  return <div className={`${style.controlGroup}`}>{children}</div>;
+export function ControlGroup({ className, children }) {
+  return <div className={`${style.controlGroup} ${className}`}>{children}</div>;
 }
 
 export function FormRow({ children }) {
-  return <div className="flex-r wrap justify-between gap-md">{children}</div>;
+  return (
+    <div className="flex-r wrap justify-between gap-md full-width">
+      {children}
+    </div>
+  );
 }
 
 export function FieldsetHeader({

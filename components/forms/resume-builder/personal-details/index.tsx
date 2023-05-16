@@ -12,11 +12,12 @@ import ResumeContext from "@/context/resume-collection-context";
 import { toast } from "react-hot-toast";
 import WorkingResumeContext from "@/context/working-resume-context";
 import { useLanguage } from "@/context/language-context";
-const PersonalDetails = ({ register, language }) => {
+import WordcountTextarea from "../../form-utilities/wordcount-textarea";
+const PersonalDetails = ({ register, language, watch }) => {
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const resume = workingResume;
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [disabled, setDisabled] = useState(false);
   function toggleShow(): void {
     setShow(!show);
@@ -97,6 +98,21 @@ const PersonalDetails = ({ register, language }) => {
               id="city"
               name="city"
               {...register("personal_details.city")}
+            />
+          </ControlGroup>
+        </FormRow>
+        <FormRow>
+          <ControlGroup className="full-width">
+            <label htmlFor="personal-introduction">
+              {language.personalIntroduction}
+            </label>
+            <WordcountTextarea
+              htmlId="personal-introduction"
+              htmlName="personal-introduction"
+              registerAs="personal_details.personalIntroduction"
+              register={register}
+              watch={watch}
+              language={language}
             />
           </ControlGroup>
         </FormRow>

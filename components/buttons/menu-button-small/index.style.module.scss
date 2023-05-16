@@ -1,14 +1,19 @@
 .menuButtonSmall {
   font-weight: 500;
-  border-bottom: 1px solid none;
   padding: 0.25rem;
   transition: 0.3s all ease-in-out;
+  border-radius: 0.25rem;
 }
 
-.menuButtonSmall:hover {
-  border-bottom: 1px solid #225522;
-}
 
-.warning {
+
+
+
+.menuButtonSmall.warning {
   color: red;
+}
+
+.menuButtonSmall.warning:hover {
+  background: red;
+  color: white;
 }

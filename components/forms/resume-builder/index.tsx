@@ -133,7 +133,11 @@ const ResumeBuilder = () => {
           language={languageData}
         />
 
-        <PersonalDetails register={register} language={languageData} />
+        <PersonalDetails
+          register={register}
+          language={languageData}
+          watch={watch}
+        />
 
         <EmploymentHistory register={register} language={languageData} />
         <button type="submit" value="save">

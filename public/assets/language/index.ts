@@ -7,7 +7,7 @@ export function getLanguageInfo() {
     let sortedLanguages = _.sortBy(languages, ["langName"]);
     let basicInfo = sortedLanguages.map((lang) => {
         return {
-            langCode: lang.code,
+            code: lang.code,
             langName: lang.langName,
             icon: lang.icon,
         }
