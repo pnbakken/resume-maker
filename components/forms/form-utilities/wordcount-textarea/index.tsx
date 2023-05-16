@@ -40,7 +40,7 @@ const WordcountTextarea = ({
         id={htmlId}
         {...register(registerAs)}
       ></textarea>
-      <div className="full-width flex-r justify-end">
+      <div className="full-width flex-r justify-end small-text">
         {count} {language.words}
       </div>
     </div>
