@@ -38,7 +38,7 @@ export function FieldsetHeader({
       <button
         onClick={() => callback()}
         type="button"
-        value="show/hide"
+        value={`show/hide ${title}`}
         className={`${style.fieldsetHeaderButton} flex-r wrap gap-sm full-width justify-between align-center`}
       >
         <h2>{title}</h2>

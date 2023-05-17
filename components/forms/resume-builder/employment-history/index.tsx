@@ -43,7 +43,7 @@ function EmploymentHistoryManager({ register, language, control, watch }) {
   });
 
   return (
-    <div className={`${style.employmentHistoryManager}`}>
+    <div className={`${style.employmentHistoryManager} flex-c gap-md`}>
       <ul
         className={`${style.employmentHistoryList} no-list-style flex-c gap-md`}
       >
