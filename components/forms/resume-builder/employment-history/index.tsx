@@ -7,7 +7,7 @@ import WorkItem from "./work-item";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import { MdOutlinePostAdd } from "react-icons/md";
 
-const EmploymentHistory = ({ register, language, control }) => {
+const EmploymentHistory = ({ register, language, control, watch }) => {
   const [resume, setResume] = useContext(ResumeContext);
   const [show, setShow] = useState(true);
 
@@ -20,12 +20,14 @@ const EmploymentHistory = ({ register, language, control }) => {
       <FieldsetHeader
         title={language.employmentHistory}
         callback={handleShow}
+        isOpen={show}
       />
       <Collapsible show={show}>
         <EmploymentHistoryManager
           register={register}
           control={control}
           language={language}
+          watch={watch}
         />
       </Collapsible>
     </Fieldset>
@@ -34,7 +36,7 @@ const EmploymentHistory = ({ register, language, control }) => {
 
 export default EmploymentHistory;
 
-function EmploymentHistoryManager({ register, language, control }) {
+function EmploymentHistoryManager({ register, language, control, watch }) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "employment_history",
@@ -42,7 +44,9 @@ function EmploymentHistoryManager({ register, language, control }) {
 
   return (
     <div className={`${style.employmentHistoryManager}`}>
-      <ul className={`${style.employmentHistoryList} no-list-style`}>
+      <ul
+        className={`${style.employmentHistoryList} no-list-style flex-c gap-md`}
+      >
         {fields.map((item, index) => {
           return (
             <WorkItem
@@ -52,6 +56,7 @@ function EmploymentHistoryManager({ register, language, control }) {
               remove={remove}
               key={item.id}
               index={index}
+              watch={watch}
             />
           );
         })}

@@ -1,5 +1,5 @@
 import style from "./index.style.module.scss";
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 export function Fieldset({ className = "", disabled = false, children }) {
   return (
@@ -27,20 +27,24 @@ export function FormRow({ children }) {
 export function FieldsetHeader({
   title = "Information",
   callback = () => {},
+  isOpen = false,
 }: {
   title?: string;
   callback?: Function;
+  isOpen?: boolean;
 }) {
   return (
-    <div className="flex-r wrap gap-sm full-width justify-between align-center">
-      <div>
+    <div>
+      <button
+        onClick={() => callback()}
+        type="button"
+        value="show/hide"
+        className={`${style.fieldsetHeaderButton} flex-r wrap gap-sm full-width justify-between align-center`}
+      >
         <h2>{title}</h2>
-      </div>
-      <div className="flex-r align-center">
-        <button onClick={() => callback()} type="button" value="show/hide">
-          <BsChevronDown />
-        </button>
-      </div>
+
+        {!isOpen ? <BsChevronDown /> : <BsChevronUp />}
+      </button>
     </div>
   );
 }

@@ -3,10 +3,15 @@
 .fieldset {
     background-color: $colour-secondary-background;
     padding: 1.5rem 2rem;
+    transition: 0.3s ease-in-out;
 
     @media (max-width: 465px) {
         padding: 1.5rem 0.5rem;
     }
+}
+
+.fieldset:hover {
+    box-shadow: 0 0 10px 2px #00000020;
 }
 
 .fieldset:disabled {

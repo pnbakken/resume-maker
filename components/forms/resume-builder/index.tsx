@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/language-context";
 import { deepEqual } from "assert";
 import { isDeepStrictEqual } from "util";
+import Education from "./education";
 
 const ResumeBuilder = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -143,6 +144,14 @@ const ResumeBuilder = () => {
           register={register}
           language={languageData}
           control={control}
+          watch={watch}
+        />
+
+        <Education
+          register={register}
+          language={languageData}
+          control={control}
+          watch={watch}
         />
         <button type="submit" value="save">
           Save resume

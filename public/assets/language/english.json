@@ -17,11 +17,12 @@
   "personalIntroduction": "Personal introduction",
 
   "employmentHistory": "Employment history",
+  "employmentTitle": "Work",
   "companyName": "Company name",
   "position": "Position",
   "employmentStartDate": "Start date",
   "employmentEndDate": "End date",
-  "stillAtCompany": "Still at company",
+  "workOngoing": "Still at company",
   "employmentDescription": "Description",
 
   "addEmployment": "Add employment",
@@ -33,7 +34,7 @@
   "fieldOfStudy": "Field of study",
   "educationStartDate": "Start date",
   "educationEndDate": "End year",
-  "stillStudying": "Still studying",
+  "educationOngoing": "Still studying",
   "educationDescription": "Description",
 
   "addEducation": "Add education",

@@ -28,7 +28,11 @@ const PersonalDetails = ({ register, language, watch }) => {
       className={`${style.personalDetails} flex-c gap-md`}
       disabled={disabled}
     >
-      <FieldsetHeader title={language.personalDetails} callback={toggleShow} />
+      <FieldsetHeader
+        title={language.personalDetails}
+        callback={toggleShow}
+        isOpen={show}
+      />
       <Collapsible show={show}>
         <FormRow>
           <ControlGroup className="standard-controlgroup-width">
