@@ -23,6 +23,8 @@ const WorkItem = ({ item, language, register, remove, index, watch }) => {
       setItemTitle(item.companyName);
       if (item.position && item.position.length > 0)
         setItemTitle(`${item.companyName} - ${item.position}`);
+    } else if (item.position && item.position.length > 0) {
+      setItemTitle(item.position);
     } else setItemTitle(language.employmentTitle);
   }, [item]);
 
@@ -57,7 +59,7 @@ const WorkItem = ({ item, language, register, remove, index, watch }) => {
             <ControlGroup>
               <div className="flex-r wrap gap-md">
                 {" "}
-                <div className="flex-c gap-sm">
+                <div className="flex-c gap-xxs">
                   <label htmlFor="start-date">
                     {language.employmentStartDate}
                   </label>
@@ -67,7 +69,7 @@ const WorkItem = ({ item, language, register, remove, index, watch }) => {
                     {...register(`employment_history.[${index}].startDate`)}
                   />
                 </div>
-                <div className="flex-c gap-sm">
+                <div className="flex-c gap-xxs">
                   <label htmlFor="end-date">{language.employmentEndDate}</label>
                   <input
                     type="month"
@@ -75,7 +77,7 @@ const WorkItem = ({ item, language, register, remove, index, watch }) => {
                     {...register(`employment_history.[${index}].endDate`)}
                   />
                 </div>
-                <div className="flex-c gap-sm ">
+                <div className="flex-c gap-xxs justify-center">
                   <label htmlFor="ongoing">{language.workOngoing}</label>
                   <input
                     type="checkbox"
