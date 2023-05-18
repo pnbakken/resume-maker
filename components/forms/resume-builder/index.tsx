@@ -138,6 +138,7 @@ const ResumeBuilder = () => {
           register={register}
           language={languageData}
           watch={watch}
+          control={control}
         />
 
         <EmploymentHistory

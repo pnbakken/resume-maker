@@ -44,23 +44,25 @@ function EmploymentHistoryManager({ register, language, control, watch }) {
 
   return (
     <div className={`${style.employmentHistoryManager} flex-c gap-md`}>
-      <ul
-        className={`${style.employmentHistoryList} no-list-style flex-c gap-md`}
-      >
-        {fields.map((item, index) => {
-          return (
-            <WorkItem
-              item={item}
-              language={language}
-              register={register}
-              remove={remove}
-              key={item.id}
-              index={index}
-              watch={watch}
-            />
-          );
-        })}
-      </ul>
+      {fields.length > 0 && (
+        <ul
+          className={`${style.employmentHistoryList} no-list-style flex-c gap-md`}
+        >
+          {fields.map((item, index) => {
+            return (
+              <WorkItem
+                item={item}
+                language={language}
+                register={register}
+                remove={remove}
+                key={item.id}
+                index={index}
+                watch={watch}
+              />
+            );
+          })}
+        </ul>
+      )}
       <div className="flex-r full-width align-center">
         <MenuButtonSmall
           type="button"

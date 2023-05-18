@@ -25,7 +25,7 @@ export function FormRow({ children }) {
 }
 
 export function FieldsetHeader({
-  title = "Information",
+  title = "",
   callback = () => {},
   isOpen = false,
 }: {

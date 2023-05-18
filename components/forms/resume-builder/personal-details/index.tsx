@@ -13,7 +13,7 @@ import { toast } from "react-hot-toast";
 import WorkingResumeContext from "@/context/working-resume-context";
 import { useLanguage } from "@/context/language-context";
 import WordcountTextarea from "../../form-utilities/wordcount-textarea";
-const PersonalDetails = ({ register, language, watch }) => {
+const PersonalDetails = ({ register, language, watch, control }) => {
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const resume = workingResume;
 

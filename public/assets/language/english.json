@@ -15,6 +15,7 @@
   "country": "Country",
   "city": "City",
   "personalIntroduction": "Personal introduction",
+  "links": "Links",
 
   "employmentHistory": "Employment history",
   "employmentTitle": "Work",
@@ -29,6 +30,7 @@
   "removeEmployment": "Remove employment",
 
   "education": "Education",
+  "educationTitle": "Education",
   "institutionName": "Institution name",
   "degree": "Degree",
   "fieldOfStudy": "Field of study",
@@ -39,6 +41,12 @@
 
   "addEducation": "Add education",
   "removeEducation": "Remove education",
+
+  "skills": "Skills",
+  "skillTitle": "Skill",
+  "skillName": "Name",
+  "addSkill": "Add skill",
+  "removeSkill": "Remove skill",
 
   "words": "words"
 }

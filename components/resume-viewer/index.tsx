@@ -88,12 +88,14 @@ function ResumeAsPDF({ resume, language }) {
     personalIntroduction,
   } = resume.personal_details || {};
 
+  const { employment_history } = resume.employment_history || {};
+
   const { resumeName, resumeLanguage } = resume || {};
 
-  const themeColors = {
+  const themeColours = {
     primary: "#0d2d59",
     white: "#fafaff",
-    darkGrey: "#1a1a2b",
+    darkGrey: "#09092b",
   };
 
   const styles = StyleSheet.create({
@@ -101,8 +103,8 @@ function ResumeAsPDF({ resume, language }) {
       flexDirection: "row",
       justifyContent: "space-between",
       padding: 0,
-      backgroundColor: themeColors.white,
-      color: themeColors.darkGrey,
+      backgroundColor: themeColours.white,
+      color: themeColours.darkGrey,
       fontSize: "12px",
       fontWeight: 400,
     },
@@ -112,8 +114,8 @@ function ResumeAsPDF({ resume, language }) {
     },
 
     pageSidebar: {
-      backgroundColor: themeColors.primary,
-      color: themeColors.white,
+      backgroundColor: themeColours.primary,
+      color: themeColours.white,
       width: "35%",
       padding: "32px 16px",
       fontSize: "12px",
@@ -145,11 +147,11 @@ function ResumeAsPDF({ resume, language }) {
     introductionText: { maxWidth: "100%" },
 
     link: {
-      color: themeColors.primary,
+      color: themeColours.primary,
     },
 
     whiteText: {
-      color: themeColors.white,
+      color: themeColours.white,
     },
   });
 
@@ -175,6 +177,22 @@ function ResumeAsPDF({ resume, language }) {
                 <Text style={styles.introductionText}>
                   {personalIntroduction}
                 </Text>
+              </View>
+            )}
+          </View>
+          <View>
+            {employment_history && (
+              <View>
+                {employment_history.map((job) => {
+                  <View>
+                    {job.companyName && (
+                      <View>
+                        <Text>{job.companyName}</Text>
+                      </View>
+                    )}
+                    <Text>A job</Text>
+                  </View>;
+                })}
               </View>
             )}
           </View>

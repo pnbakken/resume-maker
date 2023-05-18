@@ -15,6 +15,7 @@
   "country": "Land",
   "city": "By",
   "personalIntroduction": "Personlig introduksjon",
+  "links": "Lenker",
 
   "employmentHistory": "Arbeidserfaring",
   "employmentTitle": "Arbeid",
@@ -26,6 +27,7 @@
   "employmentDescription": "Beskrivelse",
   "addEmployment": "Legg til arbeid",
   "removeEmployment": "Fjern arbeid",
+
   "education": "Utdanning",
   "institutionName": "Navn på skole/institusjon",
   "degree": "Grad oppnådd",
@@ -36,5 +38,12 @@
   "educationDescription": "Beskrivelse",
   "addEducation": "Legg til utdanning",
   "removeEducation": "Fjern utdanning",
+
+  "skills": "Ferdigheter",
+  "skillTitle": "Ferdighet",
+  "skillName": "Navn",
+  "addSkill": "Legg til ferdighet",
+  "removeSkill": "Fjern ferdighet",
+
   "words": "ord"
 }

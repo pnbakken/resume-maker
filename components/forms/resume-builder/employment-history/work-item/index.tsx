@@ -19,17 +19,17 @@ const WorkItem = ({ item, language, register, remove, index, watch }) => {
   }
 
   useEffect(() => {
-    if (item.companyName && item.companyName.length > 0) {
+    if (item && item.companyName && item.companyName.length > 0) {
       setItemTitle(item.companyName);
-      if (item.position && item.position.length > 0)
+      if (item && item.position && item.position.length > 0)
         setItemTitle(`${item.companyName} - ${item.position}`);
-    } else if (item.position && item.position.length > 0) {
+    } else if (item && item.position && item.position.length > 0) {
       setItemTitle(item.position);
     } else setItemTitle(language.employmentTitle);
-  }, [item]);
+  }, []);
 
   return (
-    <li key={item.id} className={`flex-c gap-md full-width`}>
+    <li className={`flex-c gap-md full-width`}>
       <Fieldset className={`${style.workItem} flex-c gap-md`}>
         <FieldsetHeader
           title={itemTitle}
