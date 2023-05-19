@@ -69,25 +69,23 @@ const WorkItem = ({
               <div className="flex-r wrap gap-md">
                 {" "}
                 <div className="flex-c gap-xxs">
-                  <label htmlFor="start-date">
-                    {language.employmentStartDate}
-                  </label>
+                  <label htmlFor="start-date">{language.startDate}</label>
                   <input
-                    type="month"
+                    type="text"
                     name="start-date"
                     {...register(`employment_history.[${index}].startDate`)}
                   />
                 </div>
                 <div className="flex-c gap-xxs">
-                  <label htmlFor="end-date">{language.employmentEndDate}</label>
+                  <label htmlFor="end-date">{language.endDate}</label>
                   <input
-                    type="month"
+                    type="text"
                     name="end-date"
                     {...register(`employment_history.[${index}].endDate`)}
                   />
                 </div>
                 <div className="flex-c gap-xxs justify-center">
-                  <label htmlFor="ongoing">{language.workOngoing}</label>
+                  <label htmlFor="ongoing">{language.ongoing}</label>
                   <input
                     type="checkbox"
                     name="ongoing"
@@ -99,9 +97,7 @@ const WorkItem = ({
           </FormRow>
           <FormRow>
             <ControlGroup className="full-width">
-              <label htmlFor="description">
-                {language.employmentDescription}
-              </label>
+              <label htmlFor="description">{language.description}</label>
               <WordcountTextarea
                 htmlName="description"
                 register={register}

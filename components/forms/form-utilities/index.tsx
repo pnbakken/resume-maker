@@ -57,8 +57,10 @@ export function FieldsetHeader({
 export function Collapsible({
   show = false,
   children,
+  className = "",
 }: {
   show: boolean;
+  className?: string;
   children: React.ReactNode;
 }) {
   const [closing, setClosing] = useState(false);
@@ -73,7 +75,9 @@ export function Collapsible({
   }, [show]);
   return (
     <div
-      className={`${style.collapsible} ${!show && style.hidden} flex-c gap-md`}
+      className={`${style.collapsible} ${
+        !show && style.hidden
+      } flex-c gap-md ${className}`}
     >
       {(show || closing) && children}
     </div>

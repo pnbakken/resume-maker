@@ -16,6 +16,7 @@ import { useLanguage } from "@/context/language-context";
 import { deepEqual } from "assert";
 import { isDeepStrictEqual } from "util";
 import Education from "./education";
+import Skills from "./skills";
 
 const ResumeBuilder = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -159,6 +160,14 @@ const ResumeBuilder = () => {
           control={control}
           watch={watch}
         />
+
+        <Skills
+          register={register}
+          language={languageData}
+          control={control}
+          watch={watch}
+        />
+
         <button type="submit" value="save">
           Save resume
         </button>

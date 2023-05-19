@@ -11,6 +11,7 @@ const Skills = ({ register, language, control, watch }) => {
     <Fieldset className={`${style.Skills} flex-c gap-md`}>
       <FieldsetHeader
         title={language.skills}
+        titleSize={2}
         callback={handleOpen}
         isOpen={isOpen}
       />

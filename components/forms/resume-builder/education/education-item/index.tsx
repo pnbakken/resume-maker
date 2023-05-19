@@ -7,6 +7,8 @@ import {
   FieldsetHeader,
   FormRow,
 } from "@/components/forms/form-utilities";
+import WordcountTextarea from "@/components/forms/form-utilities/wordcount-textarea";
+import MenuButtonSmall from "@/components/buttons/menu-button-small";
 
 const EducationItem = ({
   item,
@@ -62,6 +64,53 @@ const EducationItem = ({
               />
             </ControlGroup>
           </FormRow>
+          <FormRow>
+            <ControlGroup className="smaller-controlgroup-width">
+              <label htmlFor="start-date">{language.startDate}</label>
+              <input
+                type="text"
+                name="start-date"
+                {...register(`education.${index}.startDate`)}
+              />
+            </ControlGroup>
+            <ControlGroup className="smaller-controlgroup-width">
+              <label htmlFor="end-date">{language.startDate}</label>
+              <input
+                type="text"
+                name="end-date"
+                {...register(`education.${index}.endDate`)}
+              />
+            </ControlGroup>
+            <ControlGroup>
+              <label htmlFor="education-ongoing">{language.ongoing}</label>
+              <input
+                type="checkbox"
+                name="education-ongoing"
+                {...register(`education.${index}.ongoing`)}
+              />
+            </ControlGroup>
+          </FormRow>
+          <FormRow>
+            <ControlGroup>
+              <label htmlFor="description">{language.description}</label>
+              <WordcountTextarea
+                register={register}
+                registerAs={`education.${index}.description`}
+                watch={watch}
+                language={language}
+                htmlName="description"
+              />
+            </ControlGroup>
+          </FormRow>
+          <div className="flex-r full-width justify-end">
+            <MenuButtonSmall
+              type="button"
+              className="warning"
+              action={() => remove(index)}
+            >
+              {language.removeEducation}
+            </MenuButtonSmall>
+          </div>
         </Collapsible>
       </Fieldset>
     </li>

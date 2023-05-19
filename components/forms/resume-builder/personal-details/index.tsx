@@ -33,7 +33,7 @@ const PersonalDetails = ({ register, language, watch, control }) => {
         callback={toggleShow}
         isOpen={show}
       />
-      <Collapsible show={show}>
+      <Collapsible show={show} className="flex-c gap-lg">
         <FormRow>
           <ControlGroup className="standard-controlgroup-width">
             <label htmlFor="desired-title">{language.desiredTitle}</label>
