@@ -16,6 +16,9 @@
   "city": "By",
   "personalIntroduction": "Personlig introduksjon",
   "links": "Lenker",
+  "personalLinkName": "Navn",
+  "personalLinkUrl": "URL",
+  "addPersonalLink": "Legg til lenke",
 
   "employmentHistory": "Arbeidserfaring",
   "employmentTitle": "Arbeid",

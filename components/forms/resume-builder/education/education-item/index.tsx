@@ -8,8 +8,16 @@ import {
   FormRow,
 } from "@/components/forms/form-utilities";
 
-const EducationItem = ({ item, language, register, remove, index, watch }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const EducationItem = ({
+  item,
+  language,
+  register,
+  remove,
+  index,
+  watch,
+  show = false,
+}) => {
+  const [isOpen, setIsOpen] = useState(show);
 
   const [itemTitle, setItemTitle] = useState(language.educationTitle);
   function handleIsOpen() {
@@ -31,6 +39,7 @@ const EducationItem = ({ item, language, register, remove, index, watch }) => {
       <Fieldset className={`${style.educationItem} flex-c gap-md`}>
         <FieldsetHeader
           title={itemTitle}
+          titleSize={3}
           callback={handleIsOpen}
           isOpen={isOpen}
         />

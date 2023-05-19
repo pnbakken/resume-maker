@@ -16,6 +16,7 @@ const Education = ({ language, register, control, watch }) => {
     <Fieldset className="flex-c gap-md">
       <FieldsetHeader
         title={language.education}
+        titleSize={2}
         callback={handleShow}
         isOpen={show}
       />
@@ -41,7 +42,7 @@ function EducationManager({ language, register, control, watch }) {
 
   return (
     <div className={`${style.educationManager} flex-c gap-md`}>
-      {fields.length > 0 && (
+      {fields.length > 0 ? (
         <ul className={`${style.educationList} no-list-style flex-c gap-md`}>
           {fields.map((item, index) => {
             return (
@@ -56,6 +57,17 @@ function EducationManager({ language, register, control, watch }) {
               />
             );
           })}
+        </ul>
+      ) : (
+        <ul className={`${style.educationList} no-list-style flex-c gap-md`}>
+          <EducationItem
+            language={language}
+            register={register}
+            remove={remove}
+            index={0}
+            watch={watch}
+            show={true}
+          />
         </ul>
       )}
       <div className="flex-r full-width align-center">

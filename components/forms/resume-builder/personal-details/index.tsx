@@ -13,6 +13,8 @@ import { toast } from "react-hot-toast";
 import WorkingResumeContext from "@/context/working-resume-context";
 import { useLanguage } from "@/context/language-context";
 import WordcountTextarea from "../../form-utilities/wordcount-textarea";
+import { useFieldArray } from "react-hook-form";
+import Heading from "@/components/typography/heading";
 const PersonalDetails = ({ register, language, watch, control }) => {
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const resume = workingResume;
@@ -24,12 +26,10 @@ const PersonalDetails = ({ register, language, watch, control }) => {
   }
 
   return (
-    <Fieldset
-      className={`${style.personalDetails} flex-c gap-md`}
-      disabled={disabled}
-    >
+    <Fieldset className={`${style.personalDetails} flex-c gap-md`}>
       <FieldsetHeader
         title={language.personalDetails}
+        titleSize={2}
         callback={toggleShow}
         isOpen={show}
       />
@@ -120,6 +120,12 @@ const PersonalDetails = ({ register, language, watch, control }) => {
             />
           </ControlGroup>
         </FormRow>
+        <PersonalLinksManager
+          register={register}
+          watch={watch}
+          control={control}
+          language={language}
+        />
         <div className="flex-r justify-end full-width">
           <MenuButtonSmall type="submit" value="save details">
             {language.saveResume}
@@ -131,3 +137,82 @@ const PersonalDetails = ({ register, language, watch, control }) => {
 };
 
 export default PersonalDetails;
+
+function PersonalLinksManager({ register, watch, control, language }) {
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "personal_details.personalLinks",
+  });
+  return (
+    <div className="flex-c gap-sm">
+      <div>
+        <Heading size={3}>Links</Heading>
+      </div>
+      <div>
+        {fields.length > 0 && (
+          <ul className="flex-c gap-sm">
+            {fields.map((item, index) => (
+              <PersonalLink
+                key={item.id}
+                register={register}
+                watch={watch}
+                control={control}
+                language={language}
+                index={index}
+                remove={remove}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
+      <div>
+        <button type="button" onClick={() => append({})}>
+          {language.addPersonalLink}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PersonalLink({ register, watch, control, language, index, remove }) {
+  return (
+    <li className={`${style.personalLinkItem} flex-c full-width gap-sm`}>
+      <FormRow>
+        <ControlGroup className="standard-controlgroup-width">
+          <label htmlFor={`personal-link-${index}-name`}>
+            {language.personalLinkName}
+          </label>
+          <input
+            type="text"
+            id={`personal-link-${index}-name`}
+            name={`personal-link-${index}-name`}
+            autoComplete="link-name"
+            {...register(`personal_details.personalLinks.${index}.name`)}
+          />
+        </ControlGroup>
+        <ControlGroup className="standard-controlgroup-width">
+          <label htmlFor={`personal-link-${index}-url`}>
+            {language.personalLinkUrl}
+          </label>
+          <input
+            type="url"
+            id={`personal-link-${index}-url`}
+            name={`personal-link-${index}-url`}
+            autoComplete="link-url"
+            {...register(`personal_details.personalLinks.${index}.url`)}
+          />
+        </ControlGroup>
+      </FormRow>
+      <div className="full-width flex-r justify-end">
+        <MenuButtonSmall
+          action={() => remove(index)}
+          value="delete-link"
+          className="warning"
+          type="button"
+        >
+          {language.deletePersonalLink || "Delete link"}
+        </MenuButtonSmall>
+      </div>
+    </li>
+  );
+}

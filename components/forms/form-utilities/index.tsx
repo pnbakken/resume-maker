@@ -1,5 +1,8 @@
+import Heading from "@/components/typography/heading";
 import style from "./index.style.module.scss";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { set } from "lodash";
 
 export function Fieldset({ className = "", disabled = false, children }) {
   return (
@@ -26,10 +29,12 @@ export function FormRow({ children }) {
 
 export function FieldsetHeader({
   title = "",
+  titleSize = 1,
   callback = () => {},
   isOpen = false,
 }: {
   title?: string;
+  titleSize?: number;
   callback?: Function;
   isOpen?: boolean;
 }) {
@@ -41,7 +46,7 @@ export function FieldsetHeader({
         value={`show/hide ${title}`}
         className={`${style.fieldsetHeaderButton} flex-r wrap gap-sm full-width justify-between align-center`}
       >
-        <h2>{title}</h2>
+        <Heading size={titleSize}>{title}</Heading>
 
         {!isOpen ? <BsChevronDown /> : <BsChevronUp />}
       </button>
@@ -56,11 +61,21 @@ export function Collapsible({
   show: boolean;
   children: React.ReactNode;
 }) {
+  const [closing, setClosing] = useState(false);
+
+  useEffect(() => {
+    if (!show) {
+      setClosing(true);
+      setTimeout(() => {
+        setClosing(false);
+      }, 300);
+    }
+  }, [show]);
   return (
-    <>
-      {show && (
-        <div className={`${style.collapsible} flex-c gap-md`}>{children}</div>
-      )}
-    </>
+    <div
+      className={`${style.collapsible} ${!show && style.hidden} flex-c gap-md`}
+    >
+      {(show || closing) && children}
+    </div>
   );
 }

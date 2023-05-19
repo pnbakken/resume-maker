@@ -16,6 +16,9 @@
   "city": "City",
   "personalIntroduction": "Personal introduction",
   "links": "Links",
+  "personalLinkName": "Name",
+  "personalLinkUrl": "Url",
+  "addPersonalLink": "Add link",
 
   "employmentHistory": "Employment history",
   "employmentTitle": "Work",

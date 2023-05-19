@@ -28,6 +28,11 @@ const ResumeBuilder = () => {
   const defaultValues = initialCopy || {
     id: Date.now(),
     dateCreated: new Date(Date.now()),
+    personal_details: {
+      personalLinks: [{}],
+    },
+    employment_history: [{}],
+    education: [{}],
   };
 
   const router = useRouter();

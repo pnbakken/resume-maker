@@ -8,6 +8,7 @@ import WorkingResumeContext from "@/context/working-resume-context";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import _ from "lodash";
+import Heading from "../typography/heading";
 
 export default function ResumeCollection({}) {
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
@@ -76,7 +77,7 @@ export default function ResumeCollection({}) {
         className={`${style.resumeCollection} full-width xl-component-width flex-c align-center radius-md gap-md`}
       >
         <div className="full-width">
-          <h2>Your Resumes</h2>
+          <Heading size={2}>Your Resumes</Heading>
         </div>
         <div>
           <button

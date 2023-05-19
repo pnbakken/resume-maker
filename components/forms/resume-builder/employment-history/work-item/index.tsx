@@ -10,8 +10,16 @@ import { useState, useContext, useEffect } from "react";
 import WorkingResumeContext from "@/context/working-resume-context";
 import WordcountTextarea from "@/components/forms/form-utilities/wordcount-textarea";
 
-const WorkItem = ({ item, language, register, remove, index, watch }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const WorkItem = ({
+  item,
+  language,
+  register,
+  remove,
+  index,
+  watch,
+  show = false,
+}) => {
+  const [isOpen, setIsOpen] = useState(show);
 
   const [itemTitle, setItemTitle] = useState("");
   function handleIsOpen() {
@@ -33,6 +41,7 @@ const WorkItem = ({ item, language, register, remove, index, watch }) => {
       <Fieldset className={`${style.workItem} flex-c gap-md`}>
         <FieldsetHeader
           title={itemTitle}
+          titleSize={3}
           callback={handleIsOpen}
           isOpen={isOpen}
         />

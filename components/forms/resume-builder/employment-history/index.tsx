@@ -8,7 +8,6 @@ import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import { MdOutlinePostAdd } from "react-icons/md";
 
 const EmploymentHistory = ({ register, language, control, watch }) => {
-  const [resume, setResume] = useContext(ResumeContext);
   const [show, setShow] = useState(true);
 
   function handleShow() {
@@ -19,6 +18,7 @@ const EmploymentHistory = ({ register, language, control, watch }) => {
     <Fieldset className={`${style.employmentHistory} flex-c gap-md `}>
       <FieldsetHeader
         title={language.employmentHistory}
+        titleSize={2}
         callback={handleShow}
         isOpen={show}
       />
