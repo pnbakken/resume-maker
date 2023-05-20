@@ -4,7 +4,15 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { set } from "lodash";
 
-export function Fieldset({ className = "", disabled = false, children }) {
+export function Fieldset({
+  className = "",
+  disabled = false,
+  children,
+}: {
+  className?: string;
+  disabled?: false;
+  children?: React.ReactNode;
+}) {
   return (
     <fieldset
       className={`${style.fieldset} ${className} radius-md `}
@@ -15,11 +23,17 @@ export function Fieldset({ className = "", disabled = false, children }) {
   );
 }
 
-export function ControlGroup({ className, children }) {
+export function ControlGroup({
+  className = "",
+  children,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
   return <div className={`${style.controlGroup} ${className}`}>{children}</div>;
 }
 
-export function FormRow({ children }) {
+export function FormRow({ children }: { children?: React.ReactNode }) {
   return (
     <div className="flex-r wrap justify-between gap-md full-width">
       {children}
@@ -39,14 +53,16 @@ export function FieldsetHeader({
   isOpen?: boolean;
 }) {
   return (
-    <div>
+    <div className="full-width">
       <button
         onClick={() => callback()}
         type="button"
         value={`show/hide ${title}`}
-        className={`${style.fieldsetHeaderButton} flex-r wrap gap-sm full-width justify-between align-center`}
+        className={`${style.fieldsetHeaderButton} flex-r  gap-sm full-width justify-between align-center`}
       >
-        <Heading size={titleSize}>{title}</Heading>
+        <Heading size={titleSize} className={style.FieldsetHeaderTitle}>
+          {title}
+        </Heading>
 
         {!isOpen ? <BsChevronDown /> : <BsChevronUp />}
       </button>

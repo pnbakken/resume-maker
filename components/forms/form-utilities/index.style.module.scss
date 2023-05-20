@@ -2,11 +2,11 @@
 
 .fieldset {
     background-color: $colour-secondary-background;
-    padding: 1.5rem 2rem;
+    padding: 1.25rem 2rem;
     transition: 0.3s ease-in-out;
 
     @media (max-width: 465px) {
-        padding: 1.5rem 0.5rem;
+        padding: 1.25rem 0.5rem;
     }
 }
 
@@ -90,4 +90,10 @@
     opacity: 0;
     overflow: hidden;
     position: absolute;
+}
+
+.FieldsetHeaderTitle {
+
+
+    @media(max-width: 450px) {}
 }

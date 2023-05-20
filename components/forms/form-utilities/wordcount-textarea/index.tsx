@@ -10,6 +10,14 @@ const WordcountTextarea = ({
   register,
   watch,
   language,
+}: {
+  htmlId?: string;
+  htmlName: string;
+  className?: string;
+  registerAs: string;
+  register: any;
+  watch: any;
+  language: any;
 }) => {
   const [count, setCount] = useState(0);
 
@@ -39,6 +47,7 @@ const WordcountTextarea = ({
         className={`${style.wordcountTextarea} ${className}`}
         id={htmlId}
         {...register(registerAs)}
+        name={htmlName}
       ></textarea>
       <div className="full-width flex-r justify-end small-text">
         {count} {language.words}

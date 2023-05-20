@@ -13,7 +13,11 @@ const ResumeCollectionContext = createContext<ResumeCollectionContextType>([
   () => {},
 ]);
 
-export const ResumeCollectionProvider: React.FC = ({ children }) => {
+export const ResumeCollectionProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [resumes, setResumes] = useLocalStorage("resumes", null);
   return (
     <ResumeCollectionContext.Provider value={[resumes, setResumes]}>

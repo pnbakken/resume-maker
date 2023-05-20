@@ -15,7 +15,14 @@ import { useLanguage } from "@/context/language-context";
 import WordcountTextarea from "../../form-utilities/wordcount-textarea";
 import { useFieldArray } from "react-hook-form";
 import Heading from "@/components/typography/heading";
-const PersonalDetails = ({ register, language, watch, control }) => {
+import { ResumeMakerSubSectionProps } from "@/types";
+import { MdAddLink } from "react-icons/md";
+const PersonalDetails = ({
+  register,
+  language,
+  watch,
+  control,
+}: ResumeMakerSubSectionProps) => {
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const resume = workingResume;
 
@@ -138,7 +145,12 @@ const PersonalDetails = ({ register, language, watch, control }) => {
 
 export default PersonalDetails;
 
-function PersonalLinksManager({ register, watch, control, language }) {
+function PersonalLinksManager({
+  register,
+  watch,
+  control,
+  language,
+}: ResumeMakerSubSectionProps) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "personal_details.personalLinks",
@@ -166,30 +178,38 @@ function PersonalLinksManager({ register, watch, control, language }) {
         )}
       </div>
       <div>
-        <button type="button" onClick={() => append({})}>
+        <MenuButtonSmall
+          type="button"
+          action={() => append({})}
+          value="add link"
+          className="flex-r gap-xxs align-center"
+        >
+          <MdAddLink />
           {language.addPersonalLink}
-        </button>
+        </MenuButtonSmall>
       </div>
     </div>
   );
 }
 
-function PersonalLink({ register, watch, control, language, index, remove }) {
+function PersonalLink({
+  register,
+  watch,
+  control,
+  language,
+  index,
+  remove,
+}: {
+  register: Function;
+  watch: Function;
+  control: Function;
+  language: any;
+  index: number;
+  remove: Function;
+}) {
   return (
     <li className={`${style.personalLinkItem} flex-c full-width gap-sm`}>
       <FormRow>
-        <ControlGroup className="standard-controlgroup-width">
-          <label htmlFor={`personal-link-${index}-name`}>
-            {language.personalLinkName}
-          </label>
-          <input
-            type="text"
-            id={`personal-link-${index}-name`}
-            name={`personal-link-${index}-name`}
-            autoComplete="link-name"
-            {...register(`personal_details.personalLinks.${index}.name`)}
-          />
-        </ControlGroup>
         <ControlGroup className="standard-controlgroup-width">
           <label htmlFor={`personal-link-${index}-url`}>
             {language.personalLinkUrl}
@@ -202,6 +222,18 @@ function PersonalLink({ register, watch, control, language, index, remove }) {
             {...register(`personal_details.personalLinks.${index}.url`)}
           />
         </ControlGroup>
+        <ControlGroup className="standard-controlgroup-width">
+          <label htmlFor={`personal-link-${index}-name`}>
+            {language.personalLinkName}
+          </label>
+          <input
+            type="text"
+            id={`personal-link-${index}-name`}
+            name={`personal-link-${index}-name`}
+            autoComplete="link-name"
+            {...register(`personal_details.personalLinks.${index}.name`)}
+          />
+        </ControlGroup>
       </FormRow>
       <div className="full-width flex-r justify-end">
         <MenuButtonSmall
@@ -210,7 +242,7 @@ function PersonalLink({ register, watch, control, language, index, remove }) {
           className="warning"
           type="button"
         >
-          {language.deletePersonalLink || "Delete link"}
+          {language.removePersonalLink || "Delete link"}
         </MenuButtonSmall>
       </div>
     </li>

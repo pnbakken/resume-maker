@@ -6,8 +6,14 @@ import { useFieldArray } from "react-hook-form";
 import WorkItem from "./work-item";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import { MdOutlinePostAdd } from "react-icons/md";
+import { ResumeMakerSubSectionProps } from "@/types";
 
-const EmploymentHistory = ({ register, language, control, watch }) => {
+const EmploymentHistory = ({
+  register,
+  language,
+  control,
+  watch,
+}: ResumeMakerSubSectionProps) => {
   const [show, setShow] = useState(true);
 
   function handleShow() {
@@ -36,7 +42,12 @@ const EmploymentHistory = ({ register, language, control, watch }) => {
 
 export default EmploymentHistory;
 
-function EmploymentHistoryManager({ register, language, control, watch }) {
+function EmploymentHistoryManager({
+  register,
+  language,
+  control,
+  watch,
+}: ResumeMakerSubSectionProps) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "employment_history",
@@ -70,7 +81,7 @@ function EmploymentHistoryManager({ register, language, control, watch }) {
           value="Add work item"
           className="flex-r gap-xxs align-center"
         >
-          <MdOutlinePostAdd /> Add work item
+          <MdOutlinePostAdd /> {language.addEmployment}
         </MenuButtonSmall>
       </div>
     </div>

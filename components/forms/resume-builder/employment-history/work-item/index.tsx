@@ -9,6 +9,9 @@ import style from "./index.style.module.scss";
 import { useState, useContext, useEffect } from "react";
 import WorkingResumeContext from "@/context/working-resume-context";
 import WordcountTextarea from "@/components/forms/form-utilities/wordcount-textarea";
+import MenuButtonSmall from "@/components/buttons/menu-button-small";
+import ItemHeaderButton from "@/components/forms/form-utilities/item-header-button";
+import { TiDeleteOutline } from "react-icons/ti";
 
 const WorkItem = ({
   item,
@@ -18,6 +21,14 @@ const WorkItem = ({
   index,
   watch,
   show = false,
+}: {
+  item: any;
+  language: any;
+  register: Function;
+  remove: Function;
+  index: number;
+  watch: Function;
+  show?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(show);
 
@@ -34,17 +45,29 @@ const WorkItem = ({
     } else if (item && item.position && item.position.length > 0) {
       setItemTitle(item.position);
     } else setItemTitle(language.employmentTitle);
-  }, []);
+  }, [item, language]);
 
   return (
     <li className={`flex-c gap-md full-width`}>
       <Fieldset className={`${style.workItem} flex-c gap-md`}>
-        <FieldsetHeader
-          title={itemTitle}
-          titleSize={3}
-          callback={handleIsOpen}
-          isOpen={isOpen}
-        />
+        <div className="flex-r justify-between">
+          <FieldsetHeader
+            title={itemTitle}
+            titleSize={3}
+            callback={handleIsOpen}
+            isOpen={isOpen}
+          />
+          <ItemHeaderButton
+            action={() => remove(index)}
+            displaySide="right"
+            value="remove item"
+            type="button"
+            className="danger-button"
+            itemOpen={isOpen}
+          >
+            <TiDeleteOutline />
+          </ItemHeaderButton>
+        </div>
         <Collapsible show={isOpen}>
           <FormRow>
             <ControlGroup className="smaller-controlgroup-width">
@@ -108,9 +131,14 @@ const WorkItem = ({
             </ControlGroup>
           </FormRow>
           <div className="full-width flex-r justify-end">
-            <button type="button" onClick={() => remove(index)}>
+            <MenuButtonSmall
+              type="button"
+              action={() => remove(index)}
+              value="remove employment"
+              className="warning"
+            >
               {language.removeEmployment}
-            </button>
+            </MenuButtonSmall>
           </div>
         </Collapsible>
       </Fieldset>

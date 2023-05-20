@@ -1,0 +1,32 @@
+@import "/styles/partials/colour-variables";
+
+.ItemHeaderButton {
+
+
+    padding: 0 0.5rem;
+    transition: 0.3s ease-in-out;
+    border-radius: 4px;
+    font-size: 28px;
+}
+
+.right {
+
+    margin: -0.75rem -1rem -0.75rem 2rem;
+
+    @media (max-width: 465px) {
+        margin: -0.75rem -0.25rem -0.75rem 0.5rem;
+    }
+
+
+}
+
+
+
+.left {
+
+    margin: -0.75rem 2rem -0.75rem -1rem;
+
+    @media (max-width: 465px) {
+        margin: -0.75rem 0.5rem -0.75rem -0.25rem;
+    }
+}

@@ -33,6 +33,7 @@
   "removeEmployment": "Fjern arbeid",
 
   "education": "Utdanning",
+  "educationTitle": "Utdanning",
   "institutionName": "Navn på skole/institusjon",
   "degree": "Grad oppnådd",
   "fieldOfStudy": "Studieretning",
@@ -46,6 +47,7 @@
   "skills": "Ferdigheter",
   "skillTitle": "Ferdighet",
   "skillName": "Navn",
+  "skillLevel": "Nivå",
   "addSkill": "Legg til ferdighet",
   "removeSkill": "Fjern ferdighet",
 

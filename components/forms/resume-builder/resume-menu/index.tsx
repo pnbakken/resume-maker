@@ -10,7 +10,15 @@ import { getLanguageInfo } from "public/assets/language";
 import { capitalizeFirstLetter } from "@/lib/functions";
 import { useLanguage } from "@/context/language-context";
 
-const ResumeMenu = ({ register, invokeDelete, language }) => {
+const ResumeMenu = ({
+  register,
+  invokeDelete,
+  language,
+}: {
+  register: Function;
+  invokeDelete: Function;
+  language: any;
+}) => {
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
 
@@ -43,9 +51,9 @@ const ResumeMenu = ({ register, invokeDelete, language }) => {
 
 export default ResumeMenu;
 
-function LanguageSelect({ register }) {
+function LanguageSelect({ register }: { register: Function }) {
   const { setLanguage } = useLanguage();
-  function handleLanguageChange(e) {
+  function handleLanguageChange(e: any) {
     setLanguage(e.target.value);
   }
 
@@ -58,15 +66,15 @@ function LanguageSelect({ register }) {
         {...register("resumeLanguage")}
         onChange={(e) => handleLanguageChange(e)}
       >
-        {getLanguageInfo().map((lang) => {
+        {getLanguageInfo().map((lang: any) => {
           return (
             <option
-              key={lang.langCode}
+              key={lang.code}
               value={lang.langName}
               className={`? ${style.selectItem} full-width flex-r justify-between gap-sm`}
             >
-              <div>{lang.icon && `${lang.icon} `}</div>
-              <div>{capitalizeFirstLetter(lang.langName)}</div>
+              {lang.icon && `${lang.icon} `}
+              {capitalizeFirstLetter(lang.langName)}
             </option>
           );
         })}

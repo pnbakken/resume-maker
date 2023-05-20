@@ -18,6 +18,14 @@ const EducationItem = ({
   index,
   watch,
   show = false,
+}: {
+  item: any;
+  language: any;
+  register: Function;
+  remove: Function;
+  index: number;
+  watch: Function;
+  show?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(show);
 
@@ -34,7 +42,7 @@ const EducationItem = ({
     } else if (item && item.degree && item.degree.length > 0) {
       setItemTitle(item.degree);
     } else setItemTitle(language.educationTitle);
-  }, []);
+  }, [item, language]);
 
   return (
     <li className={`flex-c gap-md full-width`}>
@@ -74,7 +82,7 @@ const EducationItem = ({
               />
             </ControlGroup>
             <ControlGroup className="smaller-controlgroup-width">
-              <label htmlFor="end-date">{language.startDate}</label>
+              <label htmlFor="end-date">{language.endDate}</label>
               <input
                 type="text"
                 name="end-date"
@@ -91,7 +99,7 @@ const EducationItem = ({
             </ControlGroup>
           </FormRow>
           <FormRow>
-            <ControlGroup>
+            <ControlGroup className="full-width">
               <label htmlFor="description">{language.description}</label>
               <WordcountTextarea
                 register={register}

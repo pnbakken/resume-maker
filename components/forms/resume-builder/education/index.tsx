@@ -5,8 +5,14 @@ import { useFieldArray } from "react-hook-form";
 import EducationItem from "./education-item";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import { MdOutlinePostAdd } from "react-icons/md";
+import { ResumeMakerSubSectionProps } from "@/types";
 
-const Education = ({ language, register, control, watch }) => {
+const Education = ({
+  language,
+  register,
+  control,
+  watch,
+}: ResumeMakerSubSectionProps) => {
   const [show, setShow] = useState(true);
   function handleShow() {
     setShow(!show);
@@ -34,7 +40,12 @@ const Education = ({ language, register, control, watch }) => {
 
 export default Education;
 
-function EducationManager({ language, register, control, watch }) {
+function EducationManager({
+  language,
+  register,
+  control,
+  watch,
+}: ResumeMakerSubSectionProps) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "education",

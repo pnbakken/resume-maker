@@ -17,7 +17,7 @@
   "personalIntroduction": "Personal introduction",
   "links": "Links",
   "personalLinkName": "Name",
-  "personalLinkUrl": "Url",
+  "personalLinkUrl": "URL",
   "addPersonalLink": "Add link",
   "removePersonalLink": "Remove link",
 
@@ -48,6 +48,7 @@
 
   "skills": "Skills",
   "skillTitle": "Skill",
+  "skillLevel": "Level",
   "skillName": "Name",
   "addSkill": "Add skill",
   "removeSkill": "Remove skill",

@@ -34,6 +34,11 @@ const ResumeBuilder = () => {
     },
     employment_history: [{}],
     education: [{}],
+    skills: [{}],
+    references: [{}],
+    certificates: [{}],
+    volunteer: [{}],
+    interests: [""],
   };
 
   const router = useRouter();
