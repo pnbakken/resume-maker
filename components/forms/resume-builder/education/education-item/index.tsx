@@ -38,7 +38,7 @@ const EducationItem = ({
     if (item && item.institutionName && item.institutionName.length > 0) {
       setItemTitle(item.institutionName);
       if (item.degree && item.degree.length > 0)
-        setItemTitle(`${item.insitutionName} - ${item.degree}`);
+        setItemTitle(`${item.institutionName} - ${item.degree}`);
     } else if (item && item.degree && item.degree.length > 0) {
       setItemTitle(item.degree);
     } else setItemTitle(language.educationTitle);

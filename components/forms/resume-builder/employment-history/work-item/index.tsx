@@ -57,16 +57,18 @@ const WorkItem = ({
             callback={handleIsOpen}
             isOpen={isOpen}
           />
-          <ItemHeaderButton
-            action={() => remove(index)}
-            displaySide="right"
-            value="remove item"
-            type="button"
-            className="danger-button"
-            itemOpen={isOpen}
-          >
-            <TiDeleteOutline />
-          </ItemHeaderButton>
+          {isOpen && (
+            <ItemHeaderButton
+              action={() => remove(index)}
+              displaySide="right"
+              value="remove item"
+              type="button"
+              className="danger-button"
+              itemOpen={isOpen}
+            >
+              <TiDeleteOutline />
+            </ItemHeaderButton>
+          )}
         </div>
         <Collapsible show={isOpen}>
           <FormRow>
@@ -76,6 +78,7 @@ const WorkItem = ({
                 type="text"
                 name="company-name"
                 {...register(`employment_history.${index}.companyName`)}
+                autoComplete="company-name"
               />
             </ControlGroup>
             <ControlGroup className="smaller-controlgroup-width">
@@ -84,6 +87,7 @@ const WorkItem = ({
                 type="text"
                 name="position"
                 {...register(`employment_history.${index}.position`)}
+                autoComplete="position"
               />
             </ControlGroup>
           </FormRow>
@@ -97,6 +101,7 @@ const WorkItem = ({
                     type="text"
                     name="start-date"
                     {...register(`employment_history.[${index}].startDate`)}
+                    autoComplete="start-date"
                   />
                 </div>
                 <div className="flex-c gap-xxs">
@@ -105,6 +110,7 @@ const WorkItem = ({
                     type="text"
                     name="end-date"
                     {...register(`employment_history.[${index}].endDate`)}
+                    autoComplete="end-date"
                   />
                 </div>
                 <div className="flex-c gap-xxs justify-center">
