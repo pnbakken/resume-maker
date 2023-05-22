@@ -25,12 +25,18 @@ export function Fieldset({
 
 export function ControlGroup({
   className = "",
+  styles = {},
   children,
 }: {
   className?: string;
+  styles?: any;
   children?: React.ReactNode;
 }) {
-  return <div className={`${style.controlGroup} ${className}`}>{children}</div>;
+  return (
+    <div className={`${style.controlGroup} ${className}`} style={styles}>
+      {children}
+    </div>
+  );
 }
 
 export function FormRow({ children }: { children?: React.ReactNode }) {

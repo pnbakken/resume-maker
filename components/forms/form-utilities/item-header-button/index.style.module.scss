@@ -8,10 +8,17 @@
     border-radius: 4px;
     font-size: 28px;
     opacity: 0.55;
+    transform: scale(0.9);
+
+    &:hover {
+        transform: scale(1);
+    }
 }
 
-.active {
 
+
+.active {
+    transform: scale(1);
     opacity: 1;
 }
 

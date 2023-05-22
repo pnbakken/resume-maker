@@ -8,25 +8,31 @@ const ItemHeaderButton = ({
   className,
   type = "button",
   children,
+  defaultActive = false,
 }: {
   action: Function;
   displaySide: "left" | "right";
   value: string;
   className?: string;
   type?: "button" | "submit" | "reset";
+  defaultActive?: boolean;
   children: React.ReactNode;
 }) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(defaultActive);
 
   function runAction() {
-    if (isActive) {
+    if (defaultActive) {
       action();
-      setIsActive(false);
     } else {
-      setIsActive(true);
-      setTimeout(() => {
+      if (isActive) {
+        action();
         setIsActive(false);
-      }, 2000);
+      } else {
+        setIsActive(true);
+        setTimeout(() => {
+          setIsActive(false);
+        }, 2000);
+      }
     }
   }
 

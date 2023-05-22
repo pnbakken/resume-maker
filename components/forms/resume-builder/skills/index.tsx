@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import style from "./index.style.module.scss";
-import { Collapsible, Fieldset, FieldsetHeader } from "../../form-utilities";
+import {
+  Collapsible,
+  ControlGroup,
+  Fieldset,
+  FieldsetHeader,
+  FormRow,
+} from "../../form-utilities";
 import { ResumeMakerSubSectionProps } from "@/types";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import { useFieldArray } from "react-hook-form";
@@ -50,8 +56,22 @@ function SkillsManager({
     name: "skills",
   });
 
+  const [showSkillLevel, setShowSkillLevel] = useState(false);
+
   return (
     <div className={`${style.SkillsManager} flex-c gap-md`}>
+      <FormRow>
+        <ControlGroup styles={{ opacity: "0.4" }}>
+          <label htmlFor="showSkillLevel">{language.showSkillLevel}</label>
+          <input
+            type="checkbox"
+            id="showSkillLevel"
+            checked={false}
+            disabled={true}
+            {...register("showSkillLevel")}
+          />
+        </ControlGroup>
+      </FormRow>
       {fields.length > 0 && (
         <ul className={`${style.SkillsList} no-list-style flex-c gap-md`}>
           {fields.map((item, index) => {

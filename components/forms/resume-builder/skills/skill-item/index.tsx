@@ -58,6 +58,22 @@ const SkillItem = ({
               />
             </ControlGroup>
           </FormRow>
+          <FormRow>
+            <ControlGroup
+              className="smaller-controlgroup-width"
+              styles={{ opacity: "0.4" }}
+            >
+              <label htmlFor="skill-level">{language.skillLevel} : 1-5</label>
+              <input
+                type="number"
+                min={1}
+                max={5}
+                name="skill-level"
+                disabled={true}
+                {...register(`skills.[${index}].level`)}
+              />
+            </ControlGroup>
+          </FormRow>
           <div className="full-width flex-r justify-end">
             <MenuButtonSmall
               type="button"

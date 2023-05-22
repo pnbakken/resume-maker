@@ -12,6 +12,7 @@ import WordcountTextarea from "@/components/forms/form-utilities/wordcount-texta
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import ItemHeaderButton from "@/components/forms/form-utilities/item-header-button";
 import { TiDeleteOutline } from "react-icons/ti";
+import { MdDragIndicator } from "react-icons/md";
 
 const WorkItem = ({
   item,
@@ -51,24 +52,33 @@ const WorkItem = ({
     <li className={`flex-c gap-md full-width`}>
       <Fieldset className={`${style.workItem} flex-c gap-md`}>
         <div className="flex-r justify-between">
+          <ItemHeaderButton
+            action={() => {
+              console.log("Clicked. I'm already active");
+            }}
+            displaySide="left"
+            value="sort item"
+            type="button"
+            defaultActive={true}
+          >
+            <MdDragIndicator />
+          </ItemHeaderButton>
           <FieldsetHeader
             title={itemTitle}
             titleSize={3}
             callback={handleIsOpen}
             isOpen={isOpen}
           />
-          {isOpen && (
-            <ItemHeaderButton
-              action={() => remove(index)}
-              displaySide="right"
-              value="remove item"
-              type="button"
-              className="danger-button"
-              itemOpen={isOpen}
-            >
-              <TiDeleteOutline />
-            </ItemHeaderButton>
-          )}
+
+          <ItemHeaderButton
+            action={() => remove(index)}
+            displaySide="right"
+            value="remove item"
+            type="button"
+            className="danger-button"
+          >
+            <TiDeleteOutline />
+          </ItemHeaderButton>
         </div>
         <Collapsible show={isOpen}>
           <FormRow>

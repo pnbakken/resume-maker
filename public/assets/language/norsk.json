@@ -46,6 +46,7 @@
 
   "skills": "Ferdigheter",
   "skillTitle": "Ferdighet",
+  "showSkillLevel": "Vis ferdighetsnivå",
   "skillName": "Navn",
   "skillLevel": "Nivå",
   "addSkill": "Legg til ferdighet",
