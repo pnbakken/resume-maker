@@ -42,7 +42,6 @@ const ResumeBuilder = () => {
   };
 
   const router = useRouter();
-  const prevWatchAllFieldsRef = useRef();
   const { register, watch, handleSubmit, control } = useForm({ defaultValues });
   const watchAllFields = watch();
 
@@ -84,29 +83,18 @@ const ResumeBuilder = () => {
   useEffect(() => {
     setIsMounted(true);
     console.log(workingResume);
+    console.log(watchAllFields);
     workingResume && setLanguage(workingResume.resumeLanguage);
-    if (workingResume && !workingResume.dateCreated)
-      workingResume.dateCreated = Date.now();
   }, []);
-
-  useEffect(() => {
-    if (!isEqual(watchAllFields, prevWatchAllFieldsRef.current)) {
-      if (!deletedResume) {
-        debouncedSaveToWorkingResume(watchAllFields);
-        debouncedSaveToResumeCollection(watchAllFields);
-      }
-    }
-
-    return () => {
-      debouncedSaveToResumeCollection.cancel();
-      debouncedSaveToWorkingResume.cancel();
-    };
-  }, [watchAllFields]);
 
   useEffect(() => {});
 
   if (!isMounted) {
-    return <div>Loading...</div>;
+    return (
+      <div className="full-width flex-c align-center justify-center">
+        Loading...
+      </div>
+    );
   }
 
   return (

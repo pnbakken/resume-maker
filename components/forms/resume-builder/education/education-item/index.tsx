@@ -60,7 +60,7 @@ const EducationItem = ({
               <input
                 type="text"
                 name="institution"
-                {...register(`education.${index}.institutionName`)}
+                {...register(`education[${index}].institutionName`)}
               />
             </ControlGroup>
             <ControlGroup className="smaller-controlgroup-width">
@@ -68,7 +68,17 @@ const EducationItem = ({
               <input
                 type="text"
                 name="degree"
-                {...register(`education.${index}.degree`)}
+                {...register(`education[${index}].degree`)}
+              />
+            </ControlGroup>
+          </FormRow>
+          <FormRow>
+            <ControlGroup className="smaller-controlgroup-width">
+              <label htmlFor="education-location">{language.location}</label>
+              <input
+                type="text"
+                name="education-location"
+                {...register(`education[${index}].location`)}
               />
             </ControlGroup>
           </FormRow>
@@ -78,7 +88,7 @@ const EducationItem = ({
               <input
                 type="text"
                 name="start-date"
-                {...register(`education.${index}.startDate`)}
+                {...register(`education[${index}].startDate`)}
               />
             </ControlGroup>
             <ControlGroup className="smaller-controlgroup-width">
@@ -86,7 +96,7 @@ const EducationItem = ({
               <input
                 type="text"
                 name="end-date"
-                {...register(`education.${index}.endDate`)}
+                {...register(`education[${index}].endDate`)}
               />
             </ControlGroup>
             <ControlGroup>
@@ -94,7 +104,7 @@ const EducationItem = ({
               <input
                 type="checkbox"
                 name="education-ongoing"
-                {...register(`education.${index}.ongoing`)}
+                {...register(`education[${index}].ongoing`)}
               />
             </ControlGroup>
           </FormRow>
@@ -103,7 +113,7 @@ const EducationItem = ({
               <label htmlFor="description">{language.description}</label>
               <WordcountTextarea
                 register={register}
-                registerAs={`education.${index}.description`}
+                registerAs={`education[${index}].description`}
                 watch={watch}
                 language={language}
                 htmlName="description"

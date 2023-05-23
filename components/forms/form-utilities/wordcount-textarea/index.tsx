@@ -36,8 +36,6 @@ const WordcountTextarea = ({
   const watchTextArea = watch(registerAs);
 
   useEffect(() => {
-    console.log("watching textarea");
-    console.log(watchTextArea);
     setCount(wordCount(watchTextArea));
   }, [watchTextArea]);
 
@@ -46,8 +44,8 @@ const WordcountTextarea = ({
       <textarea
         className={`${style.wordcountTextarea} ${className}`}
         id={htmlId}
-        {...register(registerAs)}
         name={htmlName}
+        {...register(registerAs)}
       ></textarea>
       <div className="full-width flex-r justify-end small-text">
         {count} {language.words}

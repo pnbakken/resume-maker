@@ -219,7 +219,7 @@ function PersonalLink({
             id={`personal-link-${index}-url`}
             name={`personal-link-${index}-url`}
             autoComplete="link-url"
-            {...register(`personal_details.personalLinks.${index}.url`)}
+            {...register(`personal_details.personalLinks.[${index}].url`)}
           />
         </ControlGroup>
         <ControlGroup className="standard-controlgroup-width">
@@ -231,7 +231,7 @@ function PersonalLink({
             id={`personal-link-${index}-name`}
             name={`personal-link-${index}-name`}
             autoComplete="link-name"
-            {...register(`personal_details.personalLinks.${index}.name`)}
+            {...register(`personal_details.personalLinks.[${index}].name`)}
           />
         </ControlGroup>
       </FormRow>

@@ -87,7 +87,7 @@ const WorkItem = ({
               <input
                 type="text"
                 name="company-name"
-                {...register(`employment_history.${index}.companyName`)}
+                {...register(`employment_history[${index}].companyName`)}
                 autoComplete="company-name"
               />
             </ControlGroup>
@@ -96,8 +96,18 @@ const WorkItem = ({
               <input
                 type="text"
                 name="position"
-                {...register(`employment_history.${index}.position`)}
+                {...register(`employment_history[${index}].position`)}
                 autoComplete="position"
+              />
+            </ControlGroup>
+          </FormRow>
+          <FormRow>
+            <ControlGroup className="smaller-controlgroup-width">
+              <label htmlFor="work-location">{language.location}</label>
+              <input
+                type="text"
+                name="work-location"
+                {...register(`employment_history[${index}].location`)}
               />
             </ControlGroup>
           </FormRow>
@@ -110,7 +120,7 @@ const WorkItem = ({
                   <input
                     type="text"
                     name="start-date"
-                    {...register(`employment_history.[${index}].startDate`)}
+                    {...register(`employment_history[${index}].startDate`)}
                     autoComplete="start-date"
                   />
                 </div>
@@ -119,7 +129,7 @@ const WorkItem = ({
                   <input
                     type="text"
                     name="end-date"
-                    {...register(`employment_history.[${index}].endDate`)}
+                    {...register(`employment_history[${index}].endDate`)}
                     autoComplete="end-date"
                   />
                 </div>
@@ -128,7 +138,7 @@ const WorkItem = ({
                   <input
                     type="checkbox"
                     name="ongoing"
-                    {...register(`employment_history.[${index}].ongoing`)}
+                    {...register(`employment_history[${index}].ongoing`)}
                   />
                 </div>
               </div>
@@ -140,7 +150,7 @@ const WorkItem = ({
               <WordcountTextarea
                 htmlName="description"
                 register={register}
-                registerAs={`employment_history.[${index}].description`}
+                registerAs={`employment_history[${index}].description`}
                 watch={watch}
                 language={language}
               />
