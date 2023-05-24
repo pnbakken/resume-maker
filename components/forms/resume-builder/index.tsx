@@ -17,6 +17,7 @@ import { deepEqual } from "assert";
 import { isDeepStrictEqual } from "util";
 import Education from "./education";
 import Skills from "./skills";
+import SaveFormButton from "@/components/buttons/save-form-button";
 
 const ResumeBuilder = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -127,6 +128,7 @@ const ResumeBuilder = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         {workingResume && <>{workingResume.id}</>}
+        <SaveFormButton language={languageData} />
         <ResumeMenu
           register={register}
           invokeDelete={deleteResume}
@@ -160,10 +162,6 @@ const ResumeBuilder = () => {
           control={control}
           watch={watch}
         />
-
-        <button type="submit" value="save">
-          Save resume
-        </button>
       </form>
     </div>
   );

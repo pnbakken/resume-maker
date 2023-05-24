@@ -53,5 +53,7 @@
   "addSkill": "Legg til ferdighet",
   "removeSkill": "Fjern ferdighet",
 
-  "words": "ord"
+  "words": "ord",
+
+  "saveForm": "Lagre"
 }

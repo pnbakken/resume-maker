@@ -11,8 +11,8 @@ import WorkingResumeContext from "@/context/working-resume-context";
 import WordcountTextarea from "@/components/forms/form-utilities/wordcount-textarea";
 import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import ItemHeaderButton from "@/components/forms/form-utilities/item-header-button";
-import { TiDeleteOutline } from "react-icons/ti";
 import { MdDragIndicator } from "react-icons/md";
+import { CgTrash } from "react-icons/cg";
 
 const WorkItem = ({
   item,
@@ -77,7 +77,7 @@ const WorkItem = ({
             type="button"
             className="danger-button"
           >
-            <TiDeleteOutline />
+            <CgTrash />
           </ItemHeaderButton>
         </div>
         <Collapsible show={isOpen}>

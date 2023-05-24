@@ -55,5 +55,7 @@
   "addSkill": "Add skill",
   "removeSkill": "Remove skill",
 
-  "words": "words"
+  "words": "words",
+
+  "saveForm": "Save"
 }

@@ -2,6 +2,8 @@
 const nextConfig = {
   experimental: {
     appDir: true,
+    workerThreads: true,
+    cpus: 1,
   },
   typescript: {
     ignoreBuildErrors: true,

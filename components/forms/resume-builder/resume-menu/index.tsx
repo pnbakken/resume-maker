@@ -9,6 +9,7 @@ import { ControlGroup } from "../../form-utilities";
 import { getLanguageInfo } from "public/assets/language";
 import { capitalizeFirstLetter } from "@/lib/functions";
 import { useLanguage } from "@/context/language-context";
+import SaveFormButton from "@/components/buttons/save-form-button";
 
 const ResumeMenu = ({
   register,
@@ -24,7 +25,7 @@ const ResumeMenu = ({
 
   return (
     <div
-      className={`${style.resumeMenu} flex-r wrap full-width gap-sm radius-md align-end`}
+      className={`${style.resumeMenu} flex-r wrap full-width gap-sm radius-md justify-between align-end`}
     >
       <div className="flex-r gap-sm">
         <ControlGroup>
