@@ -88,7 +88,20 @@ const ResumeBuilder = () => {
     workingResume && setLanguage(workingResume.resumeLanguage);
   }, []);
 
-  useEffect(() => {});
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if ((event.ctrlKey || event.metaKey) && event.key === "s") {
+        event.preventDefault();
+        handleSubmit(onSubmit)();
+        console.log("Ctrl+S or Cmd+S was pressed");
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   if (!isMounted) {
     return (

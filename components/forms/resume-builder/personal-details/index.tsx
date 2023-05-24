@@ -51,6 +51,17 @@ const PersonalDetails = ({
               {...register("personal_details.desiredTitle")}
             />
           </ControlGroup>
+          <ControlGroup className="standard-controlgroup-width">
+            <label htmlFor="image-url">
+              {language.imageUrl || "Profile image (url)"}
+            </label>
+            <input
+              type="text"
+              id="image-url"
+              name="image-url"
+              {...register("personal_details.imageUrl")}
+            />
+          </ControlGroup>
         </FormRow>
         <FormRow>
           <ControlGroup className="standard-controlgroup-width">

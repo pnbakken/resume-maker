@@ -31,18 +31,21 @@ const SaveFormButton = ({ language }) => {
   }, []);
 
   return (
-    <button
-      className={`${style.SaveFormButton}`}
-      type="submit"
-      value="save form"
-      onMouseEnter={activate}
-      onMouseLeave={deactivate}
-    >
-      <FaSave />{" "}
-      <AnimatedText animate={active}>
-        {language.saveForm || "Save form"}
-      </AnimatedText>
-    </button>
+    <div className={`${style.SaveFormContainer} flex-c align-center`}>
+      <button
+        type="submit"
+        value="save form"
+        onMouseEnter={activate}
+        onMouseLeave={deactivate}
+        className={`${style.SaveFormButton}`}
+      >
+        <FaSave />{" "}
+        <AnimatedText animate={active}>
+          {language.saveForm || "Save form"}
+        </AnimatedText>
+      </button>
+      <div className="small-text">ctrl/cmd+s</div>
+    </div>
   );
 };
 

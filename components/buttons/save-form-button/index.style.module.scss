@@ -1,22 +1,10 @@
 @import "/styles/partials/colour-variables";
 
-.SaveFormButton {
-  position: fixed;
-  width: fit-content;
-  background-color: $colour-primary;
-  color: $colour-white;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
+.SaveFormContainer {
+  position: sticky;
   align-self: flex-end;
-  gap: 0.5rem;
-  top: 10rem;
+  top: 5rem;
   margin-inline-end: -8rem;
-  font-size: 1.25rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-  transform: scale(0.9);
-  transition: all 0.3s ease-in-out;
   z-index: 10;
 
   @media(max-width: 1200px) {
@@ -24,33 +12,28 @@
   }
 }
 
+.SaveFormButton {
+
+
+  background-color: $colour-primary;
+  color: $colour-white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  font-size: 1.25rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  transform: scale(0.9);
+  transition: all 0.3s ease-in-out;
+
+
+}
+
 .SaveFormButton:hover,
 .SaveFormButton:focus {
   opacity: 1;
   transform: scale(1);
-}
-
-.animateParent {
-  visibility: hidden;
-  transition: 0.3s ease-out;
-
-  &.activeParent {
-    width: auto;
-    height: auto;
-    visibility: visible;
-  }
-}
-
-.AnimatedText {
-  display: inline-block;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(20px) scaleX(0);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-
-  &.animate {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0) scaleX(1);
-  }
 }

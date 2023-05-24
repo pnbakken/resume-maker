@@ -16,6 +16,7 @@ import {
   Link as PDFLink,
   PDFDownloadLink,
   Font,
+  Image,
 } from "@react-pdf/renderer";
 import WorkingResumeContext from "@/context/working-resume-context";
 import { useLanguage } from "@/context/language-context";
@@ -45,7 +46,9 @@ const ResumeViewer = () => {
           <Link href="/resume/">Edit</Link>
           <div>
             <PDFDownloadLink
-              document={<ResumeAsPDF resume={workingResume} />}
+              document={
+                <ResumeAsPDF resume={workingResume} language={languageData} />
+              }
               fileName={
                 (workingResume && workingResume.resumeName) || "resume.pdf"
               }
@@ -85,6 +88,7 @@ function ResumeAsPDF({ resume, language }) {
     desiredTitle,
     country,
     city,
+    imageUrl,
     personalIntroduction,
   } = resume.personal_details || {};
 
@@ -161,11 +165,26 @@ function ResumeAsPDF({ resume, language }) {
         <View style={styles.pageContainer}>
           <View style={styles.resumeHeader}>
             <View>
-              {(firstName || lastName) && (
-                <Text style={styles.resumeHeading}>
-                  {firstName && firstName} {lastName && lastName}
-                </Text>
-              )}
+              <View>
+                {(firstName || lastName) && (
+                  <Text style={styles.resumeHeading}>
+                    {firstName && firstName} {lastName && lastName}
+                  </Text>
+                )}
+              </View>
+              <View>
+                {imageUrl && (
+                  <Image
+                    src={imageUrl}
+                    cache={true}
+                    style={{
+                      borderRadius: "50%",
+                      height: "100px",
+                      width: "100px",
+                    }}
+                  />
+                )}
+              </View>
             </View>
             {desiredTitle && (
               <View>
