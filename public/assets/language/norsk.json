@@ -2,6 +2,7 @@
   "icon": "🇳🇴",
   "code": "no",
   "langName": "norsk",
+  "name": "Navn",
   "pageHeading": "Lag din CV",
   "resumeName": "Navn på CV",
   "deleteResume": "Slett CV",
@@ -53,6 +54,13 @@
   "skillLevel": "Nivå",
   "addSkill": "Legg til ferdighet",
   "removeSkill": "Fjern ferdighet",
+
+  "references": "Referanser",
+  "referenceTitle": "Referanse",
+  "referenceCompany": "Bedrift",
+  "addReference": "Legg til referanse",
+  "removeReference": "Fjern referanse",
+  "referencesOnRequest": "Referanser tilgjengelig ved forespørsel",
 
   "words": "ord",
 

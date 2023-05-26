@@ -52,9 +52,16 @@
   "skillTitle": "Skill",
   "showSkillLevel": "Show skill level",
   "skillLevel": "Level",
-  "skillName": "Name",
+  "name": "Name",
   "addSkill": "Add skill",
   "removeSkill": "Remove skill",
+
+  "references": "References",
+  "referenceTitle": "Reference",
+  "referenceCompany": "Company",
+  "addReference": "Add reference",
+  "removeReference": "Remove reference",
+  "referencesOnRequest": "References available on request",
 
   "words": "words",
 

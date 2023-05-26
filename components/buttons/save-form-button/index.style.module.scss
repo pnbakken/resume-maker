@@ -1,9 +1,10 @@
 @import "/styles/partials/colour-variables";
 
 .SaveFormContainer {
-  position: sticky;
+  position: absolute;
+  height: 100%;
+  top: -1rem;
   align-self: flex-end;
-  top: 5rem;
   margin-inline-end: -8rem;
   z-index: 10;
 
@@ -14,7 +15,8 @@
 
 .SaveFormButton {
 
-
+  position: sticky;
+  top: 5rem;
   background-color: $colour-primary;
   color: $colour-white;
   padding: 0.5rem;

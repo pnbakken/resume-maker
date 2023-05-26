@@ -18,6 +18,7 @@ import { isDeepStrictEqual } from "util";
 import Education from "./education";
 import Skills from "./skills";
 import SaveFormButton from "@/components/buttons/save-form-button";
+import References from "./references";
 
 const ResumeBuilder = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -170,6 +171,12 @@ const ResumeBuilder = () => {
         />
 
         <Skills
+          register={register}
+          language={languageData}
+          control={control}
+          watch={watch}
+        />
+        <References
           register={register}
           language={languageData}
           control={control}

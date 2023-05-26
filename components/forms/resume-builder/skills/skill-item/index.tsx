@@ -49,7 +49,7 @@ const SkillItem = ({
         <Collapsible show={isOpen} className="flex-c gap-md">
           <FormRow>
             <ControlGroup className="smaller-controlgroup-width">
-              <label htmlFor="skill-name">{language.skillName}</label>
+              <label htmlFor="skill-name">{language.skillTitle}</label>
               <input
                 type="text"
                 name="skill-name"

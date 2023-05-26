@@ -49,7 +49,7 @@ const WorkItem = ({
   }, [item, language]);
 
   return (
-    <li className={`flex-c gap-md full-width`}>
+    <li>
       <Fieldset className={`${style.workItem} flex-c gap-md`}>
         <div className="flex-r justify-between">
           <ItemHeaderButton

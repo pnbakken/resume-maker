@@ -20,7 +20,8 @@ import {
 } from "@react-pdf/renderer";
 import WorkingResumeContext from "@/context/working-resume-context";
 import { useLanguage } from "@/context/language-context";
-
+import axios from "axios";
+import pica from "pica";
 const ResumeViewer = () => {
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const [isMounted, setIsMounted] = useState(false);
@@ -95,6 +96,30 @@ function ResumeAsPDF({ resume, language }) {
   const { employment_history } = resume.employment_history || {};
 
   const { resumeName, resumeLanguage } = resume || {};
+
+  const [resizedImage, setResizedImage] = useState("");
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      const response = await axios.get(imageUrl, {
+        responseType: "arraybuffer",
+      });
+      const blob = new Blob([response.data], { type: "image/jpeg" });
+      const url = URL.createObjectURL(blob);
+
+      const img = document.createElement("img");
+      img.src = url;
+      img.onload = async () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 160;
+        canvas.height = 160;
+        await pica().resize(img, canvas);
+        const resizedImageUrl = canvas.toDataURL("image/jpeg", 0.8);
+        setResizedImage(resizedImageUrl);
+      };
+    };
+    if (imageUrl) fetchImage();
+  }, [imageUrl]);
 
   const themeColours = {
     primary: "#0d2d59",
@@ -173,9 +198,9 @@ function ResumeAsPDF({ resume, language }) {
                 )}
               </View>
               <View>
-                {imageUrl && (
+                {resizedImage && (
                   <Image
-                    src={imageUrl}
+                    src={resizedImage}
                     cache={true}
                     style={{
                       borderRadius: "50%",
