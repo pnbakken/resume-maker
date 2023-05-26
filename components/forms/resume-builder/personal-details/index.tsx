@@ -138,12 +138,24 @@ const PersonalDetails = ({
             />
           </ControlGroup>
         </FormRow>
+        <FormRow>
+          <ControlGroup className="standard-controlgroup-width">
+            <label htmlFor="driving-licence">{language.drivingLicence}</label>
+            <input
+              type="text"
+              id="driving-licence"
+              name="driving-licence"
+              {...register("personal_details.drivingLicence")}
+            />
+          </ControlGroup>
+        </FormRow>
         <PersonalLinksManager
           register={register}
           watch={watch}
           control={control}
           language={language}
         />
+
         <div className="flex-r justify-end full-width">
           <MenuButtonSmall type="submit" value="save details">
             {language.saveResume}

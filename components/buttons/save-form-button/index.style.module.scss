@@ -6,7 +6,7 @@
   top: -1rem;
   align-self: flex-end;
   margin-inline-end: -8rem;
-  z-index: 10;
+
 
   @media(max-width: 1200px) {
     margin-inline-end: 1rem;
@@ -23,7 +23,7 @@
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
-
+  z-index: 10;
   gap: 0.5rem;
 
   font-size: 1.25rem;
