@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    appDir: true,
-    workerThreads: true,
-    cpus: 1,
-  },
+const withFonts = require("next-fonts");
+
+module.exports = withFonts({
   typescript: {
     ignoreBuildErrors: true,
   },
-};
-
-module.exports = nextConfig;
+  webpack(config, options) {
+    return config;
+  },
+});

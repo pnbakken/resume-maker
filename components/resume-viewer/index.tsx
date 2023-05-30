@@ -22,6 +22,7 @@ import WorkingResumeContext from "@/context/working-resume-context";
 import { useLanguage } from "@/context/language-context";
 import axios from "axios";
 import pica from "pica";
+import ResumeAsPDF from "@/resume-templates/default";
 const ResumeViewer = () => {
   const [workingResume, setWorkingResume] = useContext(WorkingResumeContext);
   const [isMounted, setIsMounted] = useState(false);
@@ -80,7 +81,7 @@ const ResumeViewer = () => {
 
 export default ResumeViewer;
 
-function ResumeAsPDF({ resume, language }) {
+/*function ResumeAsPDF({ resume, language }) {
   const {
     firstName,
     lastName,
@@ -264,4 +265,4 @@ function ResumeAsPDF({ resume, language }) {
       </Page>
     </Document>
   );
-}
+} */
