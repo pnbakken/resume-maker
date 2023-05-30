@@ -16,7 +16,7 @@ import {
 import OswaldRegular from "@fontsource/oswald/files/oswald-latin-400-normal.woff";
 import OswaldMedium from "@fontsource/oswald/files/oswald-latin-500-normal.woff";
 import PoppinsLight from "@fontsource/poppins/files/poppins-latin-300-normal.woff";
-
+import Montserrat from "@fontsource/montserrat/files/montserrat-latin-400-normal.woff";
 Font.register({
   family: "Oswald",
   fonts: [
@@ -39,6 +39,16 @@ Font.register({
     {
       src: PoppinsLight,
       fontWeight: 300,
+      format: "woff",
+    },
+  ],
+});
+Font.register({
+  family: "Montserrat",
+  fonts: [
+    {
+      src: Montserrat,
+      fontWeight: 400,
       format: "woff",
     },
   ],
@@ -93,6 +103,9 @@ function ResumeAsPDF({ resume, language }) {
     primary: "#0d2d59",
     white: "#fafaff",
     darkGrey: "#09092b",
+    mediumDarkGrey: "#707070", //q: slightly lighter
+    mediumGrey: "#c0c0c0",
+    lightGrey: "#e0e0e0",
   };
 
   const styles = StyleSheet.create({
@@ -104,18 +117,102 @@ function ResumeAsPDF({ resume, language }) {
       color: themeColours.darkGrey,
       fontSize: "12px",
       fontWeight: 400,
-      fontFamily: "Oswald",
+      fontFamily: "Montserrat",
     },
     pageContainer: {
       padding: "32px",
       width: "65%",
+    },
+
+    resumeHeader: {
+      display: "flex",
+      minHeight: "160px",
+      flexDirection: "column",
+      gap: "0",
+      border: "1px solid red",
+    },
+    resumeHeaderName: {
+      fontSize: "28px",
+      fontWeight: 500,
+      fontFamily: "Oswald",
+    },
+    resumeHeaderTitle: {
+      fontFamily: "Poppins",
+      fontWeigth: 300,
+      fontSize: "16px",
+      color: themeColours.mediumDarkGrey,
+    },
+
+    resumeProfile: {},
+    resumeProfileText: {},
+    pageSidebar: {
+      backgroundColor: themeColours.primary,
+      color: themeColours.white,
+      width: "35%",
+      padding: "32px",
+    },
+    sidebarHeader: {
+      width: "100%",
+      minHeight: "160px",
+      display: "flex",
+      alignItems: "center",
+      border: "1px solid red",
+    },
+    sidebarHeaderImage: {
+      borderRadius: "50%",
+      objectFit: "cover",
+    },
+
+    sectionHeader: {
+      fontSize: "24px",
+      fontWeight: 400,
+      fontFamily: "Oswald",
     },
   });
 
   return (
     <Document title={resumeName || ""}>
       <Page size="A4" style={styles.page}>
-        <View style={styles.pageContainer}></View>
+        <View style={styles.pageContainer}>
+          <View style={styles.resumeHeader}>
+            <View>
+              <Text style={styles.resumeHeaderName}>
+                {firstName || ""} {lastName || ""}
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.resumeHeaderTitle}>
+                {desiredTitle.toUpperCase() || ""}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.resumeProfile}>
+            {personalIntroduction && (
+              <View>
+                <Text style={styles.sectionHeader}>Profile</Text>
+                <Text>{personalIntroduction}</Text>
+              </View>
+            )}
+          </View>
+        </View>
+        <View style={styles.pageSidebar}>
+          <View style={styles.sidebarHeader}>
+            <View>
+              {resizedImage ? (
+                //eslint-disable-next-line
+                <Image
+                  src={resizedImage}
+                  style={[
+                    styles.sidebarHeaderImage,
+                    { width: "110px", height: "110px" },
+                  ]}
+                />
+              ) : (
+                ""
+              )}
+            </View>
+          </View>
+        </View>
       </Page>
     </Document>
   );
