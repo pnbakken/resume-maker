@@ -28,13 +28,15 @@ const ResumeViewer = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [resumePDF, setResumePDF] = useState(null);
-  const { languageData } = useLanguage();
+  const { setLanguage, languageData } = useLanguage();
   const downloadPdf = async () => {};
 
   useEffect(() => {
     setIsMounted(true);
     setIsLoading(false);
     console.log(workingResume && workingResume);
+    console.log(languageData);
+    workingResume && setLanguage(workingResume.resumeLanguage);
   }, []);
 
   if (!isMounted) {

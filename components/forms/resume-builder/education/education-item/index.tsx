@@ -35,12 +35,12 @@ const EducationItem = ({
   }
 
   useEffect(() => {
-    if (item && item.institutionName && item.institutionName.length > 0) {
-      setItemTitle(item.institutionName);
-      if (item.degree && item.degree.length > 0)
-        setItemTitle(`${item.institutionName} - ${item.degree}`);
-    } else if (item && item.degree && item.degree.length > 0) {
-      setItemTitle(item.degree);
+    if (item && item.itemName && item.itemName.length > 0) {
+      setItemTitle(item.itemName);
+      if (item.position && item.position.length > 0)
+        setItemTitle(`${item.itemName} - ${item.position}`);
+    } else if (item && item.position && item.position.length > 0) {
+      setItemTitle(item.position);
     } else setItemTitle(language.educationTitle);
   }, [item, language]);
 
@@ -60,15 +60,15 @@ const EducationItem = ({
               <input
                 type="text"
                 name="institution"
-                {...register(`education[${index}].institutionName`)}
+                {...register(`education[${index}].itemName`)}
               />
             </ControlGroup>
             <ControlGroup className="smaller-controlgroup-width">
-              <label htmlFor="degree">{language.degree}</label>
+              <label htmlFor="position">{language.degree}</label>
               <input
                 type="text"
-                name="degree"
-                {...register(`education[${index}].degree`)}
+                name="position"
+                {...register(`education[${index}].position`)}
               />
             </ControlGroup>
           </FormRow>

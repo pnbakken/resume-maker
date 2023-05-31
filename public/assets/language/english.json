@@ -24,6 +24,7 @@
   "drivingLicence": "Driving licence(s)",
 
   "employmentHistory": "Employment history",
+  "employment_history": "Employment history",
   "employmentTitle": "Work",
   "companyName": "Company name",
   "position": "Position",
@@ -65,6 +66,8 @@
   "referencesOnRequest": "References available on request",
 
   "words": "words",
+  "profile": "Profile",
+  "details": "Details",
 
   "saveForm": "Save"
 }

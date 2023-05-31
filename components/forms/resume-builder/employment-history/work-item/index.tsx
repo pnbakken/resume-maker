@@ -39,10 +39,10 @@ const WorkItem = ({
   }
 
   useEffect(() => {
-    if (item && item.companyName && item.companyName.length > 0) {
-      setItemTitle(item.companyName);
+    if (item && item.itemName && item.itemName.length > 0) {
+      setItemTitle(item.itemName);
       if (item && item.position && item.position.length > 0)
-        setItemTitle(`${item.companyName} - ${item.position}`);
+        setItemTitle(`${item.itemName} - ${item.position}`);
     } else if (item && item.position && item.position.length > 0) {
       setItemTitle(item.position);
     } else setItemTitle(language.employmentTitle);
@@ -87,7 +87,7 @@ const WorkItem = ({
               <input
                 type="text"
                 name="company-name"
-                {...register(`employment_history[${index}].companyName`)}
+                {...register(`employment_history[${index}].itemName`)}
                 autoComplete="company-name"
               />
             </ControlGroup>

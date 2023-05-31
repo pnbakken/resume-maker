@@ -25,6 +25,7 @@
   "drivingLicence": "Førerkort",
 
   "employmentHistory": "Arbeidserfaring",
+  "employment_history": "Arbeidserfaring",
   "employmentTitle": "Arbeid",
   "companyName": "Navn på bedrift",
   "position": "Stilling",
@@ -64,6 +65,8 @@
   "referencesOnRequest": "Referanser tilgjengelig ved forespørsel",
 
   "words": "ord",
+  "profile": "Profil",
+  "details": "Detaljer",
 
   "saveForm": "Lagre"
 }
