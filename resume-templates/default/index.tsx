@@ -124,7 +124,7 @@ function ResumeAsPDF({ resume, language }) {
     personalLinks,
   } = resume.personal_details || {};
 
-  const { employment_history } = resume.employment_history || {};
+  const { skills, interests, languages } = resume || {};
 
   const { resumeName, resumeLanguage } = resume || {};
 
@@ -174,25 +174,27 @@ function ResumeAsPDF({ resume, language }) {
     page: {
       flexDirection: "row",
       justifyContent: "space-between",
-      padding: 0,
+
       backgroundColor: themeColours.white,
       color: themeColours.darkGrey,
       fontSize: "10px",
       fontWeight: 400,
       fontFamily: "Nunito Sans",
+      padding: 0,
     },
     pageContainer: {
-      paddingTop: "8px",
-      paddingLeft: "32px",
+      paddingLeft: "40px",
       paddingRight: "32px",
       width: "70%",
+      paddingTop: "0",
+      paddingBottom: "8px",
     },
 
     resumeHeader: {
       display: "flex",
       flexDirection: "row",
       gap: "16px",
-      minHeight: "96px",
+      minHeight: "80px",
       alignItems: "center",
       marginBottom: "8px",
     },
@@ -205,15 +207,17 @@ function ResumeAsPDF({ resume, language }) {
       fontFamily: "Poppins",
       fontWeight: 300,
       fontSize: "8px",
-      color: themeColours.mediumDarkGrey,
+      color: themeColours.darkGrey,
       marginBottom: "16px",
     },
 
     resumeMainBody: {
       display: "flex",
       flexDirection: "column",
-      gap: "16px",
+      gap: "18px",
     },
+
+    mainBodySection: {},
 
     resumeProfile: {},
     resumeProfileText: {},
@@ -222,17 +226,18 @@ function ResumeAsPDF({ resume, language }) {
       backgroundColor: themeColours.primary,
       color: themeColours.white,
       width: "30%",
-      padding: "8px 24px",
+      padding: "32px 24px",
       fontFamily: "Poppins",
       fontWeight: 400,
       fontSize: "8px",
+      position: "relative",
     },
     sidebarHeader: {
       width: "100%",
       display: "flex",
       alignItems: "center",
       marginBottom: "8px",
-      minHeight: "96px",
+      minHeight: "80px",
     },
     sidebarHeaderImage: {
       borderRadius: "50%",
@@ -244,7 +249,7 @@ function ResumeAsPDF({ resume, language }) {
     sidebarBody: {
       display: "flex",
       flexDirection: "column",
-      gap: "32px",
+      gap: "40px",
     },
 
     sidebarSection: {
@@ -254,10 +259,24 @@ function ResumeAsPDF({ resume, language }) {
     },
 
     sectionHeader: {
-      fontSize: "16px",
+      fontSize: "14px",
       fontWeight: 400,
       fontFamily: "Oswald",
       marginBottom: "4px",
+    },
+
+    list: {},
+    listItems: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "8px",
+    },
+
+    listItem: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%",
+      gap: "3px",
     },
 
     itemTitle: {
@@ -278,6 +297,15 @@ function ResumeAsPDF({ resume, language }) {
       fontSize: "8px",
     },
 
+    pageNumbers: {
+      position: "absolute",
+      bottom: "0",
+      right: "0",
+      textAlign: "center",
+      color: themeColours.mediumGrey,
+      zIndex: "1",
+    },
+
     flexRow: {
       display: "flex",
       flexDirection: "row",
@@ -286,21 +314,26 @@ function ResumeAsPDF({ resume, language }) {
     },
 
     whiteText: { color: themeColours.white },
+
+    blocker: {
+      height: "32px",
+    },
   });
 
   return (
     <Document title={resumeName || ""}>
       <Page size="A4" style={styles.page}>
-        <View style={styles.pageContainer}>
+        <View wrap style={styles.pageContainer}>
+          <View style={styles.blocker} fixed></View>
           <View style={styles.resumeHeader}>
-            <View>
-              {resizedImage ? (
-                //eslint-disable-next-line
+            {resizedImage ? (
+              <View>
                 <Image src={resizedImage} style={styles.sidebarHeaderImage} />
-              ) : (
-                ""
-              )}
-            </View>
+              </View>
+            ) : (
+              ""
+            )}
+
             <View>
               <Text style={styles.resumeHeaderName}>
                 {firstName || ""} {lastName || ""}
@@ -311,7 +344,7 @@ function ResumeAsPDF({ resume, language }) {
             </View>
           </View>
           <View style={styles.resumeMainBody}>
-            <View style={styles.resumeProfile}>
+            <View style={[styles.resumeProfile, styles.mainBodySection]}>
               {personalIntroduction && (
                 <View>
                   <Text style={styles.sectionHeader}>{language.profile}</Text>
@@ -321,48 +354,86 @@ function ResumeAsPDF({ resume, language }) {
             </View>
 
             {displayOrder.map((section, index) => {
-              return (
-                <ListDisplay
-                  list={resume[section]}
-                  listHeader={language[section]}
-                  language={language}
-                  commonStyles={styles}
-                  key={index}
-                />
-              );
+              if (resume[section] && resume[section].length > 0) {
+                return (
+                  <ListDisplay
+                    list={resume[section]}
+                    listHeader={language[section]}
+                    language={language}
+                    commonStyles={styles}
+                    key={index}
+                  />
+                );
+              } else return null;
             })}
+
+            {resume.references && resume.references.length > 0 && (
+              <References
+                list={resume.references}
+                commonStyles={styles}
+                title={language.references}
+              />
+            )}
           </View>
         </View>
+
         <View style={styles.pageSidebar}>
           <View style={styles.sidebarHeader}></View>
           <View style={styles.sidebarBody}>
-            <View style={styles.sidebarSection}>
-              <Text style={styles.sectionHeader}>{language.details}</Text>
-              <Text>{city || ""}</Text>
-              <Text>{country || ""}</Text>
-              <Text>{phoneNumber || ""}</Text>
-              <PDFLink
-                src={`mailto:${emailAddress || ""}`}
-                style={styles.whiteText}
-              >
-                {emailAddress || ""}
-              </PDFLink>
-            </View>
-            <View style={styles.sidebarSection}>
-              <Text style={styles.sectionHeader}>{language.links}</Text>
-              {personalLinks &&
-                personalLinks.map((link, index) => {
-                  return (
-                    <PDFLink
-                      src={link.url}
-                      style={styles.whiteText}
-                      key={index}
-                    >
-                      {link.name}
-                    </PDFLink>
-                  );
+            {(phoneNumber || emailAddress || city || country) && (
+              <View style={styles.sidebarSection}>
+                <Text style={styles.sectionHeader}>{language.details}</Text>
+                <Text>{city || ""}</Text>
+                <Text>{country || ""}</Text>
+                <Text>{phoneNumber || ""}</Text>
+                <PDFLink
+                  src={`mailto:${emailAddress || ""}`}
+                  style={styles.whiteText}
+                >
+                  {emailAddress || ""}
+                </PDFLink>
+              </View>
+            )}
+            {personalLinks.length > 0 && (
+              <View style={styles.sidebarSection}>
+                <Text style={styles.sectionHeader}>{language.links}</Text>
+                {personalLinks &&
+                  personalLinks.map((link, index) => {
+                    return (
+                      <PDFLink
+                        src={link.url}
+                        style={styles.whiteText}
+                        key={index}
+                      >
+                        {link.name}
+                      </PDFLink>
+                    );
+                  })}
+              </View>
+            )}
+            {skills && skills.length > 0 && (
+              <View style={styles.sidebarSection}>
+                <Text style={styles.sectionHeader}>{language.skills}</Text>
+                {skills &&
+                  skills.map((skill, index) => {
+                    return <Text key={index}>{skill.name}</Text>;
+                  })}
+              </View>
+            )}
+            {languages && languages.length > 0 && (
+              <View style={styles.sidebarSection}>
+                <Text style={styles.sectionHeader}>{language.languages}</Text>
+                {languages.map((language, index) => {
+                  return <Text key={index}>{language.name}</Text>;
                 })}
-            </View>
+              </View>
+            )}
+            {interests && (
+              <View style={styles.sidebarSection}>
+                <Text style={styles.sectionHeader}>{language.interests}</Text>
+                <Text>{interests}</Text>
+              </View>
+            )}
           </View>
         </View>
       </Page>
@@ -375,14 +446,6 @@ export default ResumeAsPDF;
 function ListDisplay({ list, listHeader = "", language, commonStyles }) {
   const styles = StyleSheet.create({
     ...commonStyles,
-    list: {
-      marginBottom: "8px",
-    },
-    listItems: {
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-    },
   });
 
   return (
@@ -409,12 +472,7 @@ function ListDisplay({ list, listHeader = "", language, commonStyles }) {
 function ListItem({ item, language, commonStyles }) {
   const styles = StyleSheet.create({
     ...commonStyles,
-    listItem: {
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-      gap: "4px",
-    },
+
     listItemHeader: {},
   });
 
@@ -431,6 +489,44 @@ function ListItem({ item, language, commonStyles }) {
       </View>
       <View>
         <Text>{item.description || ""}</Text>
+      </View>
+    </View>
+  );
+}
+
+function References({ list, commonStyles, title }) {
+  const styles = StyleSheet.create({
+    ...commonStyles,
+    twoRow: {
+      display: "flex",
+      flexDirection: "row",
+      gap: "8px",
+    },
+  });
+
+  return (
+    <View style={styles.mainBodySection}>
+      <Text style={styles.sectionHeader}>{title}</Text>
+      <View style={styles.listItems}>
+        {list.map((reference, index) => {
+          if (reference.referenceName) {
+            return (
+              <View key={index} style={styles.listItem}>
+                <Text style={styles.itemTitle}>
+                  {reference.referenceName}
+                  {reference.referenceCompany &&
+                    ` - ${reference.referenceCompany}`}
+                </Text>
+
+                {reference.referencePosition && (
+                  <Text>{reference.referencePosition}</Text>
+                )}
+                {reference.phone && <Text>{reference.phone}</Text>}
+                {reference.email && <Text>{reference.email}</Text>}
+              </View>
+            );
+          } else return null;
+        })}
       </View>
     </View>
   );

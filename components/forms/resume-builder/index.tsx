@@ -32,15 +32,16 @@ const ResumeBuilder = () => {
     id: Date.now(),
     dateCreated: new Date(Date.now()),
     personal_details: {
-      personalLinks: [{}],
+      personalLinks: [],
     },
-    employment_history: [{}],
-    education: [{}],
-    skills: [{}],
-    references: [{}],
-    certificates: [{}],
-    volunteer: [{}],
-    interests: [""],
+    languages: [],
+    employment_history: [],
+    education: [],
+    skills: [],
+    references: [],
+    certificates: [],
+    volunteer: [],
+    interests: "",
   };
 
   const router = useRouter();
