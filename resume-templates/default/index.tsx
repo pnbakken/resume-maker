@@ -150,9 +150,23 @@ function ResumeAsPDF({ resume, language }) {
       const img = document.createElement("img");
       img.src = url;
       img.onload = async () => {
+        const aspectRatio = img.width / img.height;
+        let newWidth, newHeight;
+
+        // Here we set the dimension to be resized to.
+        // If the image's width is greater than its height, we resize based on the width, and vice versa.
+        if (img.width > img.height) {
+          newWidth = 160;
+          newHeight = newWidth / aspectRatio;
+        } else {
+          newHeight = 160;
+          newWidth = newHeight * aspectRatio;
+        }
+
         const canvas = document.createElement("canvas");
-        canvas.width = 160;
-        canvas.height = 160;
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
         await pica().resize(img, canvas);
         const resizedImageUrl = canvas.toDataURL("image/jpeg", 0.8);
         setResizedImage(resizedImageUrl);
@@ -367,11 +381,14 @@ function ResumeAsPDF({ resume, language }) {
               } else return null;
             })}
 
-            {resume.references && resume.references.length > 0 && (
+            {((resume.references && resume.references.length > 0) ||
+              resume.referencesOnRequest) && (
               <References
                 list={resume.references}
                 commonStyles={styles}
                 title={language.references}
+                onRequest={resume.referencesOnRequest}
+                language={language}
               />
             )}
           </View>
@@ -453,6 +470,7 @@ function ListDisplay({ list, listHeader = "", language, commonStyles }) {
       <View>
         <Text style={styles.sectionHeader}>{listHeader}</Text>
       </View>
+
       <View style={styles.listItems}>
         {list.map((item, index) => {
           return (
@@ -494,7 +512,7 @@ function ListItem({ item, language, commonStyles }) {
   );
 }
 
-function References({ list, commonStyles, title }) {
+function References({ list, commonStyles, title, onRequest, language }) {
   const styles = StyleSheet.create({
     ...commonStyles,
     twoRow: {
@@ -507,27 +525,31 @@ function References({ list, commonStyles, title }) {
   return (
     <View style={styles.mainBodySection}>
       <Text style={styles.sectionHeader}>{title}</Text>
-      <View style={styles.listItems}>
-        {list.map((reference, index) => {
-          if (reference.referenceName) {
-            return (
-              <View key={index} style={styles.listItem}>
-                <Text style={styles.itemTitle}>
-                  {reference.referenceName}
-                  {reference.referenceCompany &&
-                    ` - ${reference.referenceCompany}`}
-                </Text>
+      {!onRequest ? (
+        <View style={styles.listItems}>
+          {list.map((reference, index) => {
+            if (reference.referenceName) {
+              return (
+                <View key={index} style={styles.listItem}>
+                  <Text style={styles.itemTitle}>
+                    {reference.referenceName}
+                    {reference.referenceCompany &&
+                      ` - ${reference.referenceCompany}`}
+                  </Text>
 
-                {reference.referencePosition && (
-                  <Text>{reference.referencePosition}</Text>
-                )}
-                {reference.phone && <Text>{reference.phone}</Text>}
-                {reference.email && <Text>{reference.email}</Text>}
-              </View>
-            );
-          } else return null;
-        })}
-      </View>
+                  {reference.referencePosition && (
+                    <Text>{reference.referencePosition}</Text>
+                  )}
+                  {reference.phone && <Text>{reference.phone}</Text>}
+                  {reference.email && <Text>{reference.email}</Text>}
+                </View>
+              );
+            } else return null;
+          })}
+        </View>
+      ) : (
+        <Text>{language.referencesOnRequest}</Text>
+      )}
     </View>
   );
 }
