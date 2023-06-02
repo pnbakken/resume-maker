@@ -10,6 +10,8 @@ import LanguageContext, { LanguageProvider } from "@/context/language-context";
 import { useContext } from "react";
 import ResumeCollection from "@/components/resume-collection";
 import { WorkingResumeProvider } from "@/context/working-resume-context";
+import { useCookies } from "react-cookie";
+import CookiesAccept from "@/components/utility/cookies-accept";
 
 export const metadata: Metadata = {
   title: "Home",

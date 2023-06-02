@@ -1,0 +1,22 @@
+@import "/styles/partials/colour-variables";
+
+.CookiesAccept {
+  /* Your styles here */
+  position: fixed;
+
+
+}
+
+.CookiesAccept::before {
+  background-color: rgb(#333, 0.6);
+
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.popupContent {
+  background: $colour-secondary-background;
+  z-index: 2;
+}

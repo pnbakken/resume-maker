@@ -1,5 +1,6 @@
 import Header from "@/components/header";
 import ClientComponent from "@/components/utility/client-component";
+import CookiesAccept from "@/components/utility/cookies-accept";
 import Toasty from "@/components/utility/toasty";
 import "@/styles/globals.scss";
 import { Inter } from "next/font/google";
@@ -18,6 +19,9 @@ export default function RootLayout({
         <Header />
         {children}
         <footer>footer</footer>
+        <ClientComponent>
+          <CookiesAccept />
+        </ClientComponent>
       </body>
     </html>
   );
