@@ -110,7 +110,7 @@ Font.register({
   ],
 });
 
-function ResumeAsPDF({ resume, language }) {
+function ResumeAsPDF({ resume, language, resizedImage }) {
   const {
     firstName,
     lastName,
@@ -119,16 +119,13 @@ function ResumeAsPDF({ resume, language }) {
     desiredTitle,
     country,
     city,
-    imageUrl,
     personalIntroduction,
     personalLinks,
-  } = resume.personal_details || {};
+  } = (resume && resume.personal_details) || {};
 
   const { skills, interests, languages } = resume || {};
 
   const { resumeName, resumeLanguage } = resume || {};
-
-  const [resizedImage, setResizedImage] = useState("");
 
   const [displayOrder, setDisplayOrder] = useState([
     "employment_history",
@@ -138,42 +135,6 @@ function ResumeAsPDF({ resume, language }) {
   useEffect(() => {
     console.log(Font.getFont({ fontFamily: "Oswald" }));
   }, []);
-
-  useEffect(() => {
-    const fetchImage = async () => {
-      const response = await axios.get(imageUrl, {
-        responseType: "arraybuffer",
-      });
-      const blob = new Blob([response.data], { type: "image/jpeg" });
-      const url = URL.createObjectURL(blob);
-
-      const img = document.createElement("img");
-      img.src = url;
-      img.onload = async () => {
-        const aspectRatio = img.width / img.height;
-        let newWidth, newHeight;
-
-        // Here we set the dimension to be resized to.
-        // If the image's width is greater than its height, we resize based on the width, and vice versa.
-        if (img.width > img.height) {
-          newWidth = 160;
-          newHeight = newWidth / aspectRatio;
-        } else {
-          newHeight = 160;
-          newWidth = newHeight * aspectRatio;
-        }
-
-        const canvas = document.createElement("canvas");
-        canvas.width = newWidth;
-        canvas.height = newHeight;
-
-        await pica().resize(img, canvas);
-        const resizedImageUrl = canvas.toDataURL("image/jpeg", 0.8);
-        setResizedImage(resizedImageUrl);
-      };
-    };
-    if (imageUrl) fetchImage();
-  }, [imageUrl]);
 
   const themeColours = {
     primary: "#0d2d59",
@@ -333,6 +294,8 @@ function ResumeAsPDF({ resume, language }) {
       height: "32px",
     },
   });
+
+  if (!resume) return null;
 
   return (
     <Document title={resumeName || ""}>
