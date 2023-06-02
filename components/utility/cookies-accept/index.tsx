@@ -34,16 +34,16 @@ const CookiesAccept = () => {
                   development. Some features may be unstable or not fully
                   implemented.
                 </p>
-                <Link href="/">See our update log for more details</Link>
+                <Link href="/">See update log for more details</Link>
               </div>
               <div>
                 <p>
-                  To keep this app free of charge, we use cookies solely for
-                  analytics purposes, and your data is stored locally in your
-                  browser. For optimal functionality, please enable JavaScript
-                  and browser storage access.
+                  To keep this app free of charge, your data is stored locally
+                  in your browser. For optimal functionality, please enable
+                  JavaScript and browser storage access. Any cookies are solely
+                  for analytical.
                 </p>
-                <Link href="/">Read our terms for more information</Link>
+                <Link href="/">Read the terms for more information</Link>
               </div>
               <p>
                 You&apos;re free to explore the app without agreeing to these
