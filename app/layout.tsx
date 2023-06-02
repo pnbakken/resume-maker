@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Analytics from "@/components/utility/analytics";
 import ClientComponent from "@/components/utility/client-component";
 import CookiesAccept from "@/components/utility/cookies-accept";
 import Toasty from "@/components/utility/toasty";
@@ -21,6 +22,7 @@ export default function RootLayout({
         <footer>footer</footer>
         <ClientComponent>
           <CookiesAccept />
+          <Analytics />
         </ClientComponent>
       </body>
     </html>
