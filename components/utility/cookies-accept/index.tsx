@@ -41,7 +41,7 @@ const CookiesAccept = () => {
                   To keep this app free of charge, your data is stored locally
                   in your browser. For optimal functionality, please enable
                   JavaScript and browser storage access. Any cookies are solely
-                  for analytical.
+                  for analytical purposes.
                 </p>
                 <Link href="/">Read the terms for more information</Link>
               </div>
