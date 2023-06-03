@@ -45,10 +45,6 @@ const CookiesAccept = () => {
                 </p>
                 <Link href="/">Read the terms for more information</Link>
               </div>
-              <p>
-                You&apos;re free to explore the app without agreeing to these
-                terms, but please note that its functionality might be limited.
-              </p>
             </div>
             <div className="popup-footer flex-r align-center justify-center">
               <button
