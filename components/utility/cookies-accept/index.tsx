@@ -13,7 +13,7 @@ const CookiesAccept = () => {
     if (!cookies.userAccepted) {
       setShowPopup(true);
     }
-  }, []);
+  }, [cookies.userAccepted]);
 
   return (
     <>
@@ -39,7 +39,7 @@ const CookiesAccept = () => {
               <div>
                 <p>
                   To keep this app free of charge, your data is stored locally
-                  in your browser. For optimal functionality, please enable
+                  in your browser. For optimal functionality, please allow
                   JavaScript and browser storage access. Any cookies are solely
                   for analytical purposes.
                 </p>
@@ -56,7 +56,7 @@ const CookiesAccept = () => {
                 onClick={() => {
                   setCookies("userAccepted", true, {
                     path: "/",
-                    maxAge: 31536000,
+                    maxAge: 86400,
                     sameSite: true,
                   });
                   setShowPopup(false);
