@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Analytics from "@/components/utility/analytics";
 import ClientComponent from "@/components/utility/client-component";
@@ -19,7 +20,7 @@ export default function RootLayout({
         <Toasty />
         <Header />
         {children}
-        <footer>footer</footer>
+        <Footer />
         <ClientComponent>
           <CookiesAccept />
           <Analytics />
