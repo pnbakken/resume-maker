@@ -1,0 +1,137 @@
+{
+  "id": 1685621559946,
+  "dateCreated": "2023-06-01T12:12:39.946Z",
+  "personal_details": {
+    "personalLinks": [
+      {
+        "url": "htttt.com",
+        "name": "Homepage"
+      },
+      {
+        "url": "saefaef.com",
+        "name": "LinkedIn"
+      }
+    ],
+    "desiredTitle": "Sales Manager",
+    "imageUrl": "https://images.pexels.com/photos/3894387/pexels-photo-3894387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "firstName": "Sierra",
+    "lastName": "Lewis",
+    "emailAddress": "sierra.l@hotyahoo.com",
+    "phoneNumber": "+44  077 7826 9296",
+    "country": "United Kingdom",
+    "city": "Norwich",
+    "drivingLicence": "B",
+    "personalIntroduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+  "languages": [],
+  "employment_history": [
+    {
+      "itemName": "Local Business",
+      "position": "Assistant Manager",
+      "location": "Sprowston",
+      "startDate": "March 2020",
+      "endDate": "August 2022",
+      "ongoing": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "itemName": "Company",
+      "position": "Sales Manager",
+      "location": "Wymondham",
+      "startDate": "May 2017",
+      "endDate": "March 2020",
+      "ongoing": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "itemName": "Marketing Agency",
+      "position": "Chief Technical Officer",
+      "location": "Thorpe St. Andrew",
+      "startDate": "January 2015",
+      "endDate": "May 2017",
+      "ongoing": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ],
+  "education": [
+    {
+      "itemName": "University of East Anglia",
+      "position": "Bachelor's Degree in Applied Marketing Sciences",
+      "location": "Norwich",
+      "startDate": "August 2012",
+      "endDate": "June 2015",
+      "ongoing": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "itemName": "Halsen Barneskole",
+      "position": "Degree in introspective cryptozoology",
+      "location": "Eaton",
+      "startDate": "September 2015",
+      "endDate": "July 2017",
+      "ongoing": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Laughing"
+    },
+    {
+      "name": "Running"
+    },
+    {
+      "name": "Skipping"
+    },
+    {
+      "name": "Jumping"
+    },
+    {
+      "name": "Hiding"
+    },
+    {
+      "name": "Bumping"
+    },
+    {
+      "name": "Grinding"
+    },
+
+    {
+      "name": "Grinding"
+    },
+    {
+      "name": "Rooting"
+    },
+    {
+      "name": "Tooting"
+    },
+    {
+      "name": "Hooting"
+    },
+    {
+      "name": "Hollering"
+    },
+    {
+      "name": "Shucking"
+    },
+    {
+      "name": "Jiving"
+    }
+  ],
+  "references": [
+    {
+      "referenceName": "Pål Nicholas Bakken",
+      "referencePosition": "Personell Manager",
+      "referenceCompany": "Business Services",
+      "phone": "+47 88558855",
+      "email": "email@email.com"
+    }
+  ],
+  "certificates": [],
+  "volunteer": [],
+  "interests": "",
+  "resumeName": "demo_resume",
+  "resumeLanguage": "english",
+  "referencesOnRequest": false,
+  "dateModified": "2023-06-04T16:03:37.605Z"
+}

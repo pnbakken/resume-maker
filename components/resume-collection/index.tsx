@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import _ from "lodash";
 import Heading from "../typography/heading";
+import demo from "@/lib/demo-resume/demo.json";
 
 export default function ResumeCollection({}) {
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
@@ -23,6 +24,9 @@ export default function ResumeCollection({}) {
   );
   useEffect(() => {
     setIsMounted(true);
+    if (!resumes) {
+      setResumes([demo]);
+    }
   }, []);
 
   useEffect(() => {
