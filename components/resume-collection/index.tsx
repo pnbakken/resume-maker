@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import _ from "lodash";
 import Heading from "../typography/heading";
-import demo from "@/lib/demo-resume/demo.json";
+import demo from "public/assets/demo-resume/demo.json";
 
 export default function ResumeCollection({}) {
   const [resumes, setResumes] = useContext(ResumeCollectionContext);
