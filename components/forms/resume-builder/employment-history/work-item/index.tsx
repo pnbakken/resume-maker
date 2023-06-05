@@ -13,6 +13,7 @@ import MenuButtonSmall from "@/components/buttons/menu-button-small";
 import ItemHeaderButton from "@/components/forms/form-utilities/item-header-button";
 import { MdDragIndicator } from "react-icons/md";
 import { CgTrash } from "react-icons/cg";
+import { Draggable } from "react-beautiful-dnd";
 
 const WorkItem = ({
   item,
@@ -49,126 +50,128 @@ const WorkItem = ({
   }, [item, language]);
 
   return (
-    <li>
-      <Fieldset className={`${style.workItem} flex-c gap-md`}>
-        <div className="flex-r justify-between">
-          <ItemHeaderButton
-            action={() => {
-              console.log("Clicked. I'm already active");
-            }}
-            displaySide="left"
-            value="sort item"
-            type="button"
-            defaultActive={true}
-          >
-            <MdDragIndicator />
-          </ItemHeaderButton>
-          <FieldsetHeader
-            title={itemTitle}
-            titleSize={3}
-            callback={handleIsOpen}
-            isOpen={isOpen}
-          />
+    <Draggable draggableId={item.id} index={index}>
+      {(provided, snapshot) => (
+        <li {...provided.draggableProps} ref={provided.innerRef}>
+          <Fieldset className={`${style.workItem} flex-c gap-md`}>
+            <div className="flex-r justify-between">
+              <ItemHeaderButton
+                displaySide="left"
+                value="reorder"
+                type="button"
+                defaultActive={true}
+                {...provided.dragHandleProps} // Here's where you provide dragHandleProps
+              >
+                <MdDragIndicator />
+              </ItemHeaderButton>
+              <FieldsetHeader
+                title={itemTitle}
+                titleSize={3}
+                callback={handleIsOpen}
+                isOpen={isOpen}
+              />
 
-          <ItemHeaderButton
-            action={() => remove(index)}
-            displaySide="right"
-            value="remove item"
-            type="button"
-            className="danger-button"
-          >
-            <CgTrash />
-          </ItemHeaderButton>
-        </div>
-        <Collapsible show={isOpen}>
-          <FormRow>
-            <ControlGroup className="smaller-controlgroup-width">
-              <label htmlFor="company-name">{language.companyName}</label>
-              <input
-                type="text"
-                name="company-name"
-                {...register(`employment_history[${index}].itemName`)}
-                autoComplete="company-name"
-              />
-            </ControlGroup>
-            <ControlGroup className="smaller-controlgroup-width">
-              <label htmlFor="position">{language.position}</label>
-              <input
-                type="text"
-                name="position"
-                {...register(`employment_history[${index}].position`)}
-                autoComplete="position"
-              />
-            </ControlGroup>
-          </FormRow>
-          <FormRow>
-            <ControlGroup className="smaller-controlgroup-width">
-              <label htmlFor="work-location">{language.location}</label>
-              <input
-                type="text"
-                name="work-location"
-                {...register(`employment_history[${index}].location`)}
-              />
-            </ControlGroup>
-          </FormRow>
-          <FormRow>
-            <ControlGroup>
-              <div className="flex-r wrap gap-md">
-                {" "}
-                <div className="flex-c gap-xxs">
-                  <label htmlFor="start-date">{language.startDate}</label>
+              <ItemHeaderButton
+                action={() => remove(index)}
+                displaySide="right"
+                value="remove item"
+                type="button"
+                className="danger-button"
+              >
+                <CgTrash />
+              </ItemHeaderButton>
+            </div>
+            <Collapsible show={isOpen}>
+              <FormRow>
+                <ControlGroup className="smaller-controlgroup-width">
+                  <label htmlFor="company-name">{language.companyName}</label>
                   <input
                     type="text"
-                    name="start-date"
-                    {...register(`employment_history[${index}].startDate`)}
-                    autoComplete="start-date"
+                    name="company-name"
+                    {...register(`employment_history[${index}].itemName`)}
+                    autoComplete="company-name"
                   />
-                </div>
-                <div className="flex-c gap-xxs">
-                  <label htmlFor="end-date">{language.endDate}</label>
+                </ControlGroup>
+                <ControlGroup className="smaller-controlgroup-width">
+                  <label htmlFor="position">{language.position}</label>
                   <input
                     type="text"
-                    name="end-date"
-                    {...register(`employment_history[${index}].endDate`)}
-                    autoComplete="end-date"
+                    name="position"
+                    {...register(`employment_history[${index}].position`)}
+                    autoComplete="position"
                   />
-                </div>
-                <div className="flex-c gap-xxs justify-center">
-                  <label htmlFor="ongoing">{language.ongoing}</label>
+                </ControlGroup>
+              </FormRow>
+              <FormRow>
+                <ControlGroup className="smaller-controlgroup-width">
+                  <label htmlFor="work-location">{language.location}</label>
                   <input
-                    type="checkbox"
-                    name="ongoing"
-                    {...register(`employment_history[${index}].ongoing`)}
+                    type="text"
+                    name="work-location"
+                    {...register(`employment_history[${index}].location`)}
                   />
-                </div>
+                </ControlGroup>
+              </FormRow>
+              <FormRow>
+                <ControlGroup>
+                  <div className="flex-r wrap gap-md">
+                    {" "}
+                    <div className="flex-c gap-xxs">
+                      <label htmlFor="start-date">{language.startDate}</label>
+                      <input
+                        type="text"
+                        name="start-date"
+                        {...register(`employment_history[${index}].startDate`)}
+                        autoComplete="start-date"
+                      />
+                    </div>
+                    <div className="flex-c gap-xxs">
+                      <label htmlFor="end-date">{language.endDate}</label>
+                      <input
+                        type="text"
+                        name="end-date"
+                        {...register(`employment_history[${index}].endDate`)}
+                        autoComplete="end-date"
+                      />
+                    </div>
+                    <div className="flex-c gap-xxs justify-center">
+                      <label htmlFor="ongoing">{language.ongoing}</label>
+                      <input
+                        type="checkbox"
+                        name="ongoing"
+                        {...register(`employment_history[${index}].ongoing`)}
+                      />
+                    </div>
+                  </div>
+                </ControlGroup>
+              </FormRow>
+              <FormRow>
+                <ControlGroup className="full-width">
+                  <label htmlFor="description">{language.description}</label>
+                  <WordcountTextarea
+                    htmlName="description"
+                    register={register}
+                    registerAs={`employment_history[${index}].description`}
+                    watch={watch}
+                    language={language}
+                  />
+                </ControlGroup>
+              </FormRow>
+              <div className="full-width flex-r justify-end">
+                <MenuButtonSmall
+                  type="button"
+                  action={() => remove(index)}
+                  value="remove employment"
+                  className="warning"
+                >
+                  {language.removeEmployment}
+                </MenuButtonSmall>
               </div>
-            </ControlGroup>
-          </FormRow>
-          <FormRow>
-            <ControlGroup className="full-width">
-              <label htmlFor="description">{language.description}</label>
-              <WordcountTextarea
-                htmlName="description"
-                register={register}
-                registerAs={`employment_history[${index}].description`}
-                watch={watch}
-                language={language}
-              />
-            </ControlGroup>
-          </FormRow>
-          <div className="full-width flex-r justify-end">
-            <MenuButtonSmall
-              type="button"
-              action={() => remove(index)}
-              value="remove employment"
-              className="warning"
-            >
-              {language.removeEmployment}
-            </MenuButtonSmall>
-          </div>
-        </Collapsible>
-      </Fieldset>
-    </li>
+            </Collapsible>
+          </Fieldset>
+        </li>
+      )}
+    </Draggable>
   );
 };
 

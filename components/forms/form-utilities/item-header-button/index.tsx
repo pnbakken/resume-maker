@@ -2,15 +2,16 @@ import { useState } from "react";
 import style from "./index.style.module.scss";
 
 const ItemHeaderButton = ({
-  action,
+  action = () => {},
   displaySide,
   value,
   className,
   type = "button",
   children,
   defaultActive = false,
+  ...props
 }: {
-  action: Function;
+  action?: Function;
   displaySide: "left" | "right";
   value: string;
   className?: string;
@@ -36,9 +37,14 @@ const ItemHeaderButton = ({
     }
   }
 
+  let buttonProps = { ...props };
+  if (action) {
+    buttonProps.onClick = runAction;
+  }
+
   return (
     <button
-      onClick={runAction}
+      {...buttonProps}
       value={`${value} - ${
         isActive ? "click to confirm" : "click to activate"
       }`}
