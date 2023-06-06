@@ -79,7 +79,9 @@ function EmploymentHistoryManager({
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
-              ></DragPlaceholder>
+              >
+                Employment
+              </DragPlaceholder>
             )}
           >
             {(provided) => (

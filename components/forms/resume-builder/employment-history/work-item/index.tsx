@@ -39,18 +39,25 @@ const WorkItem = ({
     setIsOpen(!isOpen);
   }
 
+  const watchTitle = watch([
+    `employment_history[${index}].itemName`,
+    `employment_history[${index}].position`,
+  ]);
+
   useEffect(() => {
-    if (item && item.itemName && item.itemName.length > 0) {
-      setItemTitle(item.itemName);
-      if (item && item.position && item.position.length > 0)
-        setItemTitle(`${item.itemName} - ${item.position}`);
-    } else if (item && item.position && item.position.length > 0) {
-      setItemTitle(item.position);
-    } else setItemTitle(language.employmentTitle);
-  }, [item, language]);
+    console.log(watchTitle);
+    let title = "";
+
+    if (watchTitle[1]) {
+      title = watchTitle[1];
+      if (watchTitle[0]) title += ` - ${watchTitle[0]}`;
+    } else if (watchTitle[0]) title = watchTitle[0];
+    else title = language.employmentTitle;
+    setItemTitle(title);
+  }, [watchTitle, language]);
 
   return (
-    <Draggable draggableId={item.id} index={index}>
+    <Draggable draggableId={`employment_${index}`} index={index}>
       {(provided, snapshot) => (
         <li {...provided.draggableProps} ref={provided.innerRef}>
           <Fieldset className={`${style.workItem} flex-c gap-md`}>

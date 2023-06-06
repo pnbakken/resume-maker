@@ -9,7 +9,7 @@ const ItemHeaderButton = ({
   type = "button",
   children,
   defaultActive = false,
-  ...props
+  ...otherProps
 }: {
   action?: Function;
   displaySide: "left" | "right";
@@ -37,7 +37,7 @@ const ItemHeaderButton = ({
     }
   }
 
-  let buttonProps = { ...props };
+  let buttonProps = { ...otherProps };
   if (action) {
     buttonProps.onClick = runAction;
   }

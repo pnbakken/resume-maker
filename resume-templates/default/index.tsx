@@ -344,17 +344,18 @@ function ResumeAsPDF({ resume, language, resizedImage }) {
               } else return null;
             })}
 
-            {((resume.references && resume.references.length > 0) ||
-              resume.referencesOnRequest) && (
-              <References
-                list={resume.references}
-                commonStyles={styles}
-                title={language.references}
-                onRequest={resume.referencesOnRequest}
-                language={language}
-              />
-            )}
+            {(resume.references && resume.references.length > 0) ||
+              (resume.references && resume.referencesOnRequest && (
+                <References
+                  list={resume.references}
+                  commonStyles={styles}
+                  title={language.references}
+                  onRequest={resume.referencesOnRequest}
+                  language={language}
+                />
+              ))}
           </View>
+          <View style={styles.blocker} fixed></View>
         </View>
 
         <View style={styles.pageSidebar}>
@@ -415,6 +416,7 @@ function ResumeAsPDF({ resume, language, resizedImage }) {
               </View>
             )}
           </View>
+          <View style={styles.blocker} fixed></View>
         </View>
       </Page>
     </Document>

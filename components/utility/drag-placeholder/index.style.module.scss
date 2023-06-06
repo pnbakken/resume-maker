@@ -1,3 +1,12 @@
 .DragPlaceholder {
   /* Your styles here */
+  position: relative;
+}
+
+.DragPlaceHolder::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(48, 48, 48, 0.5);
 }
