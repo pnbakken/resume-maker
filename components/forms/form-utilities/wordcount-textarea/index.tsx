@@ -22,7 +22,6 @@ const WordcountTextarea = ({
   const [count, setCount] = useState(0);
 
   function wordCount(value: string): number {
-    console.log(value);
     if (value) {
       const sentence = value.trim().split(" "); // create "replacePunctuation" regex function.
 

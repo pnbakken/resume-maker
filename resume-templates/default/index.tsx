@@ -189,7 +189,7 @@ function ResumeAsPDF({ resume, language, resizedImage }) {
     resumeMainBody: {
       display: "flex",
       flexDirection: "column",
-      gap: "18px",
+      gap: "16px",
     },
 
     mainBodySection: {},
@@ -244,7 +244,7 @@ function ResumeAsPDF({ resume, language, resizedImage }) {
     listItems: {
       display: "flex",
       flexDirection: "column",
-      gap: "8px",
+      gap: "10px",
     },
 
     listItem: {
@@ -344,8 +344,8 @@ function ResumeAsPDF({ resume, language, resizedImage }) {
               } else return null;
             })}
 
-            {(resume.references && resume.references.length > 0) ||
-              (resume.references && resume.referencesOnRequest && (
+            {resume.references &&
+              (resume.references.length > 0 || resume.referencesOnRequest) && (
                 <References
                   list={resume.references}
                   commonStyles={styles}
@@ -353,7 +353,7 @@ function ResumeAsPDF({ resume, language, resizedImage }) {
                   onRequest={resume.referencesOnRequest}
                   language={language}
                 />
-              ))}
+              )}
           </View>
           <View style={styles.blocker} fixed></View>
         </View>

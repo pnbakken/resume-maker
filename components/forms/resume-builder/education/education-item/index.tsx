@@ -44,7 +44,6 @@ const EducationItem = ({
   ]);
 
   useEffect(() => {
-    console.log(watchTitle);
     let title = "";
 
     if (watchTitle[1]) {
